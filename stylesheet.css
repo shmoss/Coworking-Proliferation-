@@ -11,7 +11,7 @@ svg {
 }
 
 #play-button {
-      position: absolute;
+      position: inline-block;
       top: 140px;
       left: 50px;
       background: #f08080;
@@ -56,10 +56,46 @@ svg {
       background-color: #696969;
     }
 
+#timeslide {
+    -webkit-appearance: none;
+    width: 70%;
+    height: 10px;
+    border-radius: 5px;   
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+
+
+
+#timeslide::-webkit-slider-thumb {
+    -webkit-appearance: none; /* Override default look */
+    appearance: none;
+    border-radius: 25px;   
+    width: 25px; /* Set a specific slider handle width */
+    height: 25px; /* Slider handle height */
+    background: #f08080; /* Green background */
+    cursor: pointer; /* Cursor on hover */
+}
+
+.slider::-moz-range-thumb {
+   -webkit-appearance: none; /* Override default look */
+    appearance: none;
+    border-radius: 25px;   
+    width: 25px; /* Set a specific slider handle width */
+    height: 25px; /* Slider handle height */
+    background: #f08080; /* Green background */
+    cursor: pointer; /* Cursor on hover */
+}
+
+
+
 #stop {
-      position: absolute;
-      top: 140px;
-      left: 120px;
+      position: inline-block;
+      top: 240px;
+      left: 900px;
       background: #f08080;
       padding-right: 26px;
       border-radius: 3px;
