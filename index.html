@@ -57,14 +57,14 @@
           	<h2 class="subtitle has-text-centered" style="margin-left:-150px;"></h2>         
           </div>
          </div>
-        <p class="subtitle is-5 has-text-centered" style="margin-top:0px">While coworking appears to be a recent phenomenon, the trend towards coworking has been years in the making.  In the mid-nineties, only a few coworking concepts existed nationally.  That number has steadily grown as the concept of coworking has evolved and proliferated across the US - especially in metros like New York, San Francisco, Silicon Valley, Los Angeles, Denver, and New York. Not only have the number of coworking spaces increased dramatically, but they are occupying larger blocks of space.  In 2018 alone, 8,559,229 square feet were leased for coworking/flexible space - with most of these leases signed in New York, San Francisco, Washington DC, Chicago, and Seattle!!as.  </p>
+        <p class="subtitle is-5 has-text-centered" style="margin-top:0px">While coworking appears to be a recent phenomenon, the trend towards coworking has been years in the making.  In the mid-nineties, only a few coworking concepts existed nationally.  That number has steadily grown as the concept of coworking has evolved and proliferated across the US - especially in metros like New York, San Francisco, Silicon Valley, Los Angeles, Denver, and New York. Not only have the number of coworking spaces increased dramatically, but they are occupying larger blocks of space.  In 2018 alone, 8,559,229 square feet were leased for coworking/flexible space - with most of these leases signed in New York, San Francisco, Washington DC, Chicago, and Seattle.  </p>
 
          <div class="container" >
 
 
          <div class="column is-half" style="text-align:center">
 
-         	<div id="sliderContainer" style=" width:500px;  height:150px; text-align: center"> 
+         	<div id="sliderContainer" style=" width:500px;  height:80px; text-align: center; margin-top:40px"> 
 
          		<input id="timeslide" type="range" class="slider" min="0" max="25" value="0" step="1"   /><br>
          		 <span id="range" style="font-family:optima"; >1993</span>
@@ -88,15 +88,42 @@
 
   
 
+<div class="container" >
 
+	   <p class="subtitle is-5 has-text-centered" style="margin-top:0px">While coworking appears to be a recent phenomenon, the trend towards coworking has been years in the making.  In the mid-nineties, only a few coworking concepts existed nationally.  That number has steadily grown as the concept of coworking has evolved and proliferated across the US - especially in metros like New York, San Francisco, Silicon Valley, Los Angeles, Denver, and New York. Not only have the number of coworking spaces increased dramatically, but they are occupying larger blocks of space.  In 2018 alone, 8,559,229 square feet were leased for coworking/flexible space - with most of these leases signed in New York, San Francisco, Washington DC, Chicago, and Seattle.  </p>
+
+
+         <div class="column is-half" style="text-align:center">
+
+
+         	<div id="sliderContainer" style=" width:500px;  height:80px; text-align: center; margin-top:40px"> 
+
+         		<input id="timeslide-leaflet" type="range" min="0" max="25" value="0" step="1" /><br>
+         		<span id="range-leaflet" style="font-family:optima"; >1993</span>
+
+    			<div id="vis" style=" padding-top: 10px"  >
+  					<button id="play-button-leaflet" style="text-align:center" >Play</button>
+  					<button type="button" id="stop-leaflet">Pause</button>
+				</div>
+
+				<div id="vis">
+ 					
+				</div>
+       	
+       
+        </div>
+
+        
+</div>
+</div>
 
     	
 	
 
-<button id="play-button-leaflet">Play</button>
-<button type="button" id="stop-leaflet">Pause</button>
-<input id="timeslide-leaflet" type="range" min="0" max="25" value="0" step="1" /><br>
-<span id="range-leaflet" style="font-family:optima"; >1993</span>
+
+
+
+
 	
 	<div id="map" class="sf" style="width: 600px; height: 400px; margin-left: 250px" pointer-events="all">  
 
@@ -176,12 +203,12 @@
     		.data( statesProj.features )
     		.enter()
     		.insert( "path" )
-    		.attr( "fill", "black" )
+    		.attr( "fill", '#000019' )
     		.attr( "opacity", .9 )
     		.attr( "stroke", "#696969" )
    			// .attr("transform", "translate(-200,-80)")
     		.attr( "border-radius", '50%' )
-    		.attr( "stroke-width", ".35" )
+    		.attr( "stroke-width", .4 )
     		.attr( "d", geoPath2 )
     		.attr("class","states");
         	
@@ -406,7 +433,7 @@ function pulse() {
 
  		var radius = d3.scaleLinear()
     		.domain([20000, 40000, 60000, 80000, 100000]) //568158 37691912
-      		.range([4, 8]);
+      		.range([8, 10, 12, 14, 16]);
 
 
     	var type = d3.scaleOrdinal()
@@ -465,7 +492,8 @@ function pulse() {
    			.attr("r", function(d) { return radius(d.properties.Lease_Size)})
    			.attr("class", 'features')
    			.attr("id", 'foo')
-   			.attr("classed", ClassMatch)
+   			.attr("classed", initialClassMatch)
+   			.attr("pointer-events", initialClassMatch)
    			console.log(feature)
 			
 		function drawAndUpdateCircles() {
@@ -480,32 +508,7 @@ function pulse() {
 		drawAndUpdateCircles();
 			map.on("moveend", drawAndUpdateCircles);
 			//this does not work - elistener won't trigger on mouse events?
-			d3.selectAll(".features")
 			
-
-			.on("mouseover", function(d) { 
-
-			
-
-		
-			var value2014 = currentMap.get(d.properties.Tenant);     
-           LeafletDiv.transition()        
-                .duration(200)      
-                .style("opacity", .9);
-
-            LeafletDiv .html('<br/>' + d.properties.Tenant + '<br/>' + d.properties.Sign_Date)  
-                .style("left", (d3.event.pageX) + "px")     
-                .style("top", (d3.event.pageY - 88) + "px"); 
-                d3.select(this).attr("class","countyHover");   
-            })
-            .on("mouseout", function(d) {       
-            		LeafletDiv.transition()        
-                	.duration(200)      
-                	.style("opacity", 0);  
-            		d3.select(this).attr("class","features"); 
-            });
-			//this does work
-			//d3.selectAll(".features").style("opacity", .1)
 
 
 		var myTimer;
@@ -536,7 +539,7 @@ function pulse() {
 
     		d3.selectAll(".features")
         		.attr("opacity", dateMatch)
-        		.attr("classed", ClassMatch);
+        		.attr("pointer-events", ClassMatch)
 	}
 
 
@@ -556,7 +559,7 @@ function pulse() {
     	if (yearInt <= inputValueInt && yearExpirationInt >= inputValueInt) {
     		console.log('match!'+ year)
         	
-       	 return ".7";
+       	 return ".5";
     	} else {
         	return "0";
     	};
@@ -573,16 +576,62 @@ function pulse() {
     	var dateExpiration = (data.properties.Expiration);
     	var yearExpiration = dateExpiration.substring(0, 4);
     	var yearExpirationInt = parseInt(yearExpiration, 10);
-
+    	console.log(yearInt, inputValueInt)
 
     	if (yearInt <= inputValueInt && yearExpirationInt >= inputValueInt) {
     		console.log('match!'+ year)
         	
-       	 return "features2";
+       	 return "all";
     	} else {
-        	return "invisible";
+        	return "none";
     	};
 	}
+
+	function initialClassMatch(data, value) {
+
+    	var date = (data.properties.Sign_Date);
+    	var year = date.substring(0, 4);
+
+    	var inputValueInt = parseInt(inputValue, 10);
+    	var yearInt = parseInt(year, 10);
+
+    	var dateExpiration = (data.properties.Expiration);
+    	var yearExpiration = dateExpiration.substring(0, 4);
+    	var yearExpirationInt = parseInt(yearExpiration, 10);
+    	console.log(yearInt)
+    	if (yearInt = 1998 ) {
+    		console.log('match!'+ year)
+        	
+       	 return "all";
+    	} else {
+        	return "none";
+    	};
+	}
+
+
+	d3.selectAll(".features")
+					.on("mouseover", function(d) { 
+						console.log("visible")
+					
+						var value2014 = currentMap.get(d.properties.Tenant);     
+          		 		LeafletDiv.transition()        
+               			 .duration(200)      
+                		.style("opacity", .9);
+
+            			LeafletDiv .html('<br/>' + d.properties.Tenant + '<br/>' + d.properties.Sign_Date)  
+                		.style("left", (d3.event.pageX- 108) + "px")     
+               			.style("top", (d3.event.pageY - 108) + "px"); 
+               		 d3.select(this).attr("class","countyHover");   
+            	})
+
+            	.on("mouseout", function(d) {       
+            		LeafletDiv.transition()        
+                	.duration(200)      
+                	.style("opacity", 0);  
+            		d3.select(this).attr("class","features"); 
+            	});
+			//this does work
+			//d3.selectAll(".features").style("opacity", .1)
 		
 	}
 		
