@@ -265,7 +265,7 @@ svg {
 
 #timeslide-leaflet {
     -webkit-appearance: none;
-    width: 70%;
+    width: 60%;
     height: 10px;
     border-radius: 5px;   
     background: #d3d3d3;
