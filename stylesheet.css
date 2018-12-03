@@ -1,3 +1,4 @@
+
 svg {
 	
     left: 0; 
@@ -6,6 +7,73 @@ svg {
   margin-right: auto;
 }
 }
+
+
+
+.container{
+
+}
+
+  .container:before {
+   
+  
+    padding-left: 15px;
+     content: "";
+
+
+  }
+  .container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+  
+  .checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 17px;
+    width: 17px;
+    background-color: #eee;
+  }
+
+
+  
+  .container:hover input~.checkmark {
+    background-color: #ccc;
+  }
+  
+  .container input:checked~.checkmark {
+    background-color: #e30613;
+  }
+  
+  .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+    
+  }
+  
+  .container input:checked~.checkmark:after {
+    display: block;
+  }
+  
+  .container .checkmark:after {
+    left: 6px;
+    top: 3px;
+    bottom:3px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+
+  }
+
 .subtitle  {
 	font: 14px Baskerville; 
 }
@@ -14,7 +82,7 @@ svg {
       position: inline-block;
       top: 140px;
       left: 50px;
-      background: #f08080;
+      background: #e30613;
       padding-right: 26px;
       border-radius: 3px;
       border: none;
@@ -24,6 +92,7 @@ svg {
       width: 60px;
       cursor: pointer;
       height: 30px;
+
     }
 
 
@@ -31,7 +100,7 @@ svg {
       position: inline-block;
       top: 140px;
       left: 50px;
-      background: #f08080;
+      background: #e30613;
       padding-right: 26px;
       border-radius: 3px;
       border: none;
@@ -41,6 +110,7 @@ svg {
       width: 60px;
       cursor: pointer;
       height: 30px;
+
     }
 
  #map {
@@ -76,7 +146,7 @@ svg {
     border-radius: 25px;   
     width: 25px; /* Set a specific slider handle width */
     height: 25px; /* Slider handle height */
-    background: #f08080; /* Green background */
+    background: #e30613; /* Green background */
     cursor: pointer; /* Cursor on hover */
 }
 
@@ -112,7 +182,7 @@ svg {
     border-radius: 25px;   
     width: 25px; /* Set a specific slider handle width */
     height: 25px; /* Slider handle height */
-    background: #f08080; /* Green background */
+    background: #e30613; /* Green background */
     cursor: pointer; /* Cursor on hover */
 }
 
@@ -122,7 +192,7 @@ svg {
     border-radius: 25px;   
     width: 25px; /* Set a specific slider handle width */
     height: 25px; /* Slider handle height */
-    background: #f08080; /* Green background */
+    background: #e30613; /* Green background */
     cursor: pointer; /* Cursor on hover */
 }
 
@@ -132,7 +202,7 @@ svg {
     border-radius: 25px;   
     width: 25px; /* Set a specific slider handle width */
     height: 25px; /* Slider handle height */
-    background: #f08080; /* Green background */
+    background: #e30613; /* Green background */
     cursor: pointer; /* Cursor on hover */
 }
 
@@ -142,7 +212,7 @@ svg {
       position: inline-block;
       top: 240px;
       left: 900px;
-      background: #f08080;
+      background: #e30613;
       padding-right: 26px;
       border-radius: 3px;
       border: none;
@@ -162,7 +232,7 @@ svg {
       position: inline-block;
       top: 140px;
       left: 50px;
-      background: #f08080;
+      background: #e30613;
       padding-right: 26px;
       border-radius: 3px;
       border: none;
@@ -390,46 +460,3 @@ div.leafletDiv {
 }
 
 
-fieldset.group  { 
-  margin: 0; 
-  padding: 0; 
-  margin-bottom: 1.25em; 
-  padding: .125em; 
-} 
-
-fieldset.group legend { 
-  margin: 0; 
-  padding: 0; 
-  font-weight: bold; 
-  margin-left: 20px; 
-  font-size: 100%; 
-  color: black; 
-} 
-
-
-ul.checkbox  { 
-  margin: 0; 
-  padding: 0; 
-  margin-left: 20px; 
-  list-style: none; 
-} 
-
-ul.checkbox li input { 
-  margin-right: .25em; 
-} 
-
-ul.checkbox li { 
-  border: 1px transparent solid; 
-  display:inline-block;
-  width:12em;
-} 
-
-ul.checkbox li label { 
-  margin-left: ; 
-} 
-ul.checkbox li:hover, 
-ul.checkbox li.focus  { 
-  background-color: lightyellow; 
-  border: 1px gray solid; 
-  width: 12em; 
-} 

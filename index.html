@@ -53,7 +53,7 @@
 
     		
         <!-- Title -->
-        <h1 class="title has-text-centered">Coworking Nation?</h1>
+        <h1 class="title has-text-centered"  style="color:#e30613; ">Coworking Nation?</h1>
         <h2 class="subtitle has-text-centered"></h2>
 
         <div class="container">
@@ -62,7 +62,7 @@
 				</div>
 				<div class="col-md-8 indexText" style="font:JLL;padding-top:100px; text-align:left"  >
 
-					<p>While coworking appears to be a recent phenomenon, the trend towards coworking has been years in the making.  In the mid-nineties, only a few coworking concepts existed nationally.  That number has steadily grown as the concept of coworking has evolved and proliferated across the US - especially in metros like New York, San Francisco, Silicon Valley, Los Angeles, Denver, and New York. Not only have the number of coworking spaces increased dramatically, but they are occupying larger blocks of space.  In 2018 alone, 8,559,229 square feet were leased for coworking/flexible space - with most of these leases signed in New York, San Francisco, Washington DC, Chicago, and Seattle.</p>
+					<p>While coworking is now a ubiquitous presence in the urban landscape, the coworking trend has been years in the making.  In the mid-nineties, only a few coworking concepts existed nationally.  That number has steadily grown as the concept of coworking has evolved and proliferated across the US - especially in metros like New York, San Francisco, Silicon Valley, Los Angeles, Denver, and New York. Not only have the number of coworking spaces increased dramatically, but they are occupying larger blocks of space.  In 2018 alone, 8,559,229 square feet were leased for coworking/flexible space - with most of these leases signed in New York, San Francisco, Washington DC, Chicago, and Seattle.</p>
 
 				</div>
 
@@ -73,13 +73,13 @@
    	</div >
 
   
-  	<div class="container">
+  	<div class="checkcontainer">
 			<div class="row">
 				<div class="col-md-2">
 				</div>
 				<div class="col-md-8 indexText" style="padding-top:0px" >
 
-					<div id="sliderContainer" style=" width:400px;  height:80px; text-align: center; margin-right:0px"> 
+					<div id="sliderContainer" style=" width:50%;  height:75%; text-align: center; margin-right:0px"> 
 
          			<input id="timeslide" type="range" class="slider" min="0" max="25" value="0" step="1"   /><br>
          		 	<span id="range" >1993</span>
@@ -101,19 +101,24 @@
 
 
 
-    <div class="container">
+    <div class="container">  
+
+
+        <div class="container">
 			<div class="row">
 				<div class="col-md-2">
 				</div>
-				<div class="col-md-8 indexText" style="padding-top:70px; padding-bottom:30px; text-align:left"  >
+				<div class="col-md-8 indexText" style="font:JLL;padding-top:50px; padding-bottom:50px; text-align:left"  >
 
-					<p>Whdfgilsddfe coworking appears to be a recent phenomenon, the trend towards coworking has been years in the making.  In the mid-nineties, only a few coworking concepts existed nationally.  That number has steadily grown as the concept of coworking has evolved and proliferated across the US - especially in metros like New York, San Francisco, Silicon Valley, Los Angeles, Denver, and New York. Not only have the number of coworking spaces increased dramatically, but they are occupying larger blocks of space.  In 2018 alone, 8,559,229 square feet were leased for coworking/flexible space - with most of these leases signed in New York, San Francisco, Washington DC, Chicago, and Seattle.</p>
+					<p>While coworking is now a ubiquitous presence in the urban landscape, the coworking trend has been years in the making.  In the mid-nineties, only a few coworking concepts existed nationally.  That number has steadily grown as the concept of coworking has evolved and proliferated across the US - especially in metros like New York, San Francisco, Silicon Valley, Los Angeles, Denver, and New York. Not only have the number of coworking spaces increased dramatically, but they are occupying larger blocks of space.  In 2018 alone, 8,559,229 square feet were leased for coworking/flexible space - with most of these leases signed in New York, San Francisco, Washington DC, Chicago, and Seattle.</p>
 
 				</div>
 
 
 			</div>
 		</div>
+
+   	</div >
 
 
 		
@@ -130,7 +135,7 @@
 			</div>
 		</div>
 
-	 <div class="container">
+	 <div class="container" style = "margin-top:-45px">
 			<div class="row">
 				<div class="col-md-2">
 				</div>
@@ -138,19 +143,63 @@
 
 					<div  id="sliderContainer" style=" width:50%;  height:75%; float: left; margin-top:20px"> 
 						<div id="range-leaflet-title" style ="vertical-align:top; padding-bottom:3%" >Lease Sign Year</div>
-         				<input id="timeslide-leaflet" style ="float:bottom" type="range" min="0" max="25" value="0" step="1" /><br>
+         				<input id="timeslide-leaflet" style ="position:relative; width:70%;float:bottom" type="range" min="0" max="25" value="0" step="1" /><br>
          				<span id="range-leaflet" style="display:block; margin-top:3%" >All Current Leases</span>
 
     					<div id="vis" style=" padding-top: 10px"  >
-  							<button id="play-button-leaflet" style="text-align:center" >Play</button>
-  							<button type="button" id="stop-leaflet">Pause</button>
+  							<label  ><b>Agency Broker</b>
+  							</label>
+  					<label class="container" >Select All
+  							<input type="checkbox" id="select-all" checked >
+  							<span class="checkmark"></span>
+					</label>
+					<label class="container" >Avisons
+  							<input type="checkbox" id="AvisonCheckbox" checked >
+  							<span class="checkmark"></span>
+					</label>
+					<label class="container" >CBRE
+  							<input type="checkbox" id="CBRECheckbox" checked >
+  							<span class="checkmark"></span>
+					</label>
+					<label class="container" >Colliers
+  							<input type="checkbox" id="ColliersCheckbox" checked >
+  							<span class="checkmark"></span>
+					</label>
+					<label class="container" >Cushman & Wakefield
+  							<input type="checkbox" id="CushmanCheckbox" checked >
+  							<span class="checkmark"></span>
+					</label>
+					<label class="container" >JLL
+  							<input type="checkbox" id="JLLCheckbox" checked >
+  							<span class="checkmark"></span>
+					</label>
+					<label class="container" >Newmark
+  							<input type="checkbox" id="NewmarkCheckbox" checked >
+  							<span class="checkmark"></span>
+					</label>
+					<label class="container" >Lincoln Property Company
+  							<input type="checkbox" id="LincolnCheckbox" checked >
+  							<span class="checkmark"></span>
+					</label>
+					<label class="container" >Tishman Speyer
+  							<input type="checkbox" id="TishmanCheckbox" checked >
+  							<span class="checkmark"></span>
+					</label>
+					<label class="container" >Transwestern
+  							<input type="checkbox" id="TranswesternCheckbox" checked >
+  							<span class="checkmark"></span>
+					</label>
+					<label class="container" >Other
+  							<input type="checkbox" id="OtherCheckbox" checked >
+  							<span class="checkmark"></span>
+					</label>
 						</div>
 				     	
         			</div>
 
         		<div  id="sliderContainer" style=" width:50%;  height:75%; float: right; margin-top:20px"> 
         			<div id="range-sizeSlide-leaflet-title" style ="vertical-align:top; padding-bottom:3%" >Lease Size</div>
-         			<input id="sizeSlide-leaflet" type="range" min="0" max="31" value="0" step="1" /><br>
+         			<input id="sizeSlide-leaflet" style="position:relative; width:70%"type="range" min="0" max="31" value="0" step="1" /><br>
          			<span id="sizeRange-leaflet" style="display:block; margin-top:3%" >All Lease Sizes</span>		
 
         		</div>
@@ -166,52 +215,11 @@
 
 	
 	<div>
+		
+			
+		
 
-		<div class="container">
-			<div class="row">
-				<div class="col-md-2">
-				</div>
-				<div class="col-md-8 indexText">
-					<input type="checkbox" id="JLLCheckbox" checked> JLL
-					<input style = "margin-left:45px"; type="checkbox" id="JLLCheckbox" checked> JLL
-				</div>	
-			</div>
-		</div>
-
-		<div class="container">
-			<div class="row">
-				<div class="col-md-2">
-				</div>
-				<div class="col-md-8 indexText">
-					<input type="checkbox" id="CBRECheckbox" checked> CBRE
-
-				</div>	
-
-			</div>
-		</div>
-
-
-		<div id="checkboxes">
-  <label>some label</label>
-  <ul>
-    <li><input type="checkbox" id="cb1" value="pepperoni" /><label for="cb1">Pepperoni</label></li> 
-  	<li><input type="checkbox" id="cb2" value="sausage" /><label for="cb2">Sausage</label></li> 
-  
-  </ul>
-
-</div>
-
-<fieldset class="group"> 
-<legend>Select standard pizza toppings</legend> 
-<ul class="checkbox"> 
-  <li><input type="checkbox" id="cb1" value="pepperoni" /><label for="cb1">Pepperoni</label></li> 
-  <li><input type="checkbox" id="cb2" value="sausage" /><label for="cb2">Sausage</label></li> 
-  <li><input type="checkbox" id="cb3" value="mushrooms" /><label for="cb3">Mushrooms</label></li> 
-  <li><input type="checkbox" id="cb4" value="onions" /><label for="cb4">Onions</label></li> 
-  <li><input type="checkbox" id="cb5" value="gpeppers" /><label for="cb5">Green Peppers</label></li> 
-  <li><input type="checkbox" id="cb6" value="xcheese" /><label for="cb6>">Extra Cheese</label></li> 
-</ul> 
-</fieldset> 
+	
 		
 
 
@@ -235,7 +243,7 @@
     //Set values for lease-size range slider
     var sizeInputValue = 0;
     var leaseSizes = ["0","10000","20000","30000","40000", "50000","60000","70000","80000","90000","100000","110000","120000","130000","140000","140000","150000",
-    				 "160000","170000","180000","190000","2000000","210000","220000","230000","240000","250000","260000","270000","280000","290000","300000"];
+    				 "160000","170000","180000","190000","200000","210000","220000","230000","240000","250000","260000","270000","280000","290000","300000"];
 
     var currentMap = d3.map();
 
@@ -330,7 +338,7 @@
     		.data( coworkingTenantsNational.features )
     		.enter()
     		.append( "path" )
-    		.attr( "fill", '#ffc107' )
+    		.attr( "fill", '#e30613' )
     		.attr( "fill-opacity", initialdateMatch )
     		//.attr( "stroke", "#696969" )
     		//.attr("transform", "translate(-200,-80)")
@@ -592,6 +600,7 @@ function pulse() {
 
     	});
 
+    	//Agency Checkboxes
 
 		d3.selectAll("#JLLCheckbox").on("change", function() {
   				var type = "JLL"
@@ -604,6 +613,16 @@ function pulse() {
 				});
 			//checkBox();
 
+		d3.selectAll("#AvisonCheckbox").on("change", function() {
+  				var type = "Avison Young"
+  				// I *think* "inline" is the default.
+  				display = this.checked ? "inline" : "none";
+
+ 				d3.selectAll(".features")
+    			.filter(function(d) { return d.properties.Agency_Bro === type; })
+    			.attr("display", display);
+				});	
+
 		d3.selectAll("#CBRECheckbox").on("change", function() {
   				var type = "CBRE"
   				// I *think* "inline" is the default.
@@ -613,6 +632,97 @@ function pulse() {
     			.filter(function(d) { return d.properties.Agency_Bro === type; })
     			.attr("display", display);
 				});
+
+		d3.selectAll("#ColliersCheckbox").on("change", function() {
+  				var type = "Colliers International"
+  				// I *think* "inline" is the default.
+  				display = this.checked ? "inline" : "none";
+
+ 				d3.selectAll(".features")
+    			.filter(function(d) { return d.properties.Agency_Bro === type; })
+    			.attr("display", display);
+				});
+
+		d3.selectAll("#CushmanCheckbox").on("change", function() {
+  				var type = "Cushman & Wakefield"
+  				// I *think* "inline" is the default.
+  				display = this.checked ? "inline" : "none";
+
+ 				d3.selectAll(".features")
+    			.filter(function(d) { return d.properties.Agency_Bro === type; })
+    			.attr("display", display);
+				})
+
+		d3.selectAll("#NewmarkCheckbox").on("change", function() {
+  				var type = "Newmark Knight Frank"
+  				// I *think* "inline" is the default.
+  				display = this.checked ? "inline" : "none";
+
+ 				d3.selectAll(".features")
+    			.filter(function(d) { return d.properties.Agency_Bro === type; })
+    			.attr("display", display);
+				})
+
+		d3.selectAll("#LincolnCheckbox").on("change", function() {
+  				var type = "Lincoln Property Company"
+  				// I *think* "inline" is the default.
+  				display = this.checked ? "inline" : "none";
+
+ 				d3.selectAll(".features")
+    			.filter(function(d) { return d.properties.Agency_Bro === type; })
+    			.attr("display", display);
+				})
+
+		d3.selectAll("#TishmanCheckbox").on("change", function() {
+  				var type = "Tishman Speyer"
+  				// I *think* "inline" is the default.
+  				display = this.checked ? "inline" : "none";
+
+ 				d3.selectAll(".features")
+    			.filter(function(d) { return d.properties.Agency_Bro === type; })
+    			.attr("display", display);
+				})
+
+		d3.selectAll("#TranswesternCheckbox").on("change", function() {
+  				var type = "Transwestern"
+  				// I *think* "inline" is the default.
+  				display = this.checked ? "inline" : "none";
+
+ 				d3.selectAll(".features")
+    			.filter(function(d) { return d.properties.Agency_Bro === type; })
+    			.attr("display", display);
+				})
+
+		d3.selectAll("#OtherCheckbox").on("change", function() {
+  				var type = "Transwestern"
+  				// I *think* "inline" is the default.
+  				display = this.checked ? "inline" : "none";
+
+ 				d3.selectAll(".features")
+    			.filter(function(d) { return d.properties.Agency_Bro != 'JLL' &&
+    										 d.properties.Agency_Bro != 'Avison Young' &&
+    										 d.properties.Agency_Bro != 'CBRE' &&
+    										 d.properties.Agency_Bro != 'Colliers International' &&
+    										 d.properties.Agency_Bro != 'Cushman & Wakefield' &&
+    										 d.properties.Agency_Bro != 'Newmark Knight Frank' &&
+    										 d.properties.Agency_Bro != 'Lincoln Property Company' &&
+    										 d.properties.Agency_Bro != 'Lincoln Property Company' &&
+    										 d.properties.Agency_Bro != 'Tishman Speyer' &&
+    										 d.properties.Agency_Bro != 'Transwestern'; })
+    			.attr("display", display);
+				})
+
+
+		d3.selectAll("#select-all").on("change", function() {
+  				var type = "Transwestern"
+  				// I *think* "inline" is the default.
+  				display = this.checked ? "inline" : "none";
+
+ 				d3.selectAll(".features")
+    			.filter(function(d) { return d.properties.Agency_Bro != null
+    										 })
+    			.attr("display", display);
+				})
 
 
 		function update(value, currentValue) {
@@ -881,21 +991,16 @@ function pulse() {
 	function checkBox(){
 				d3.selectAll(".features")
         		.attr("opacity", agencyBrokerMatch)
-        		//.attr("pointer-events", sizeClassMatch)
-		
+        		.attr("opacity", agencyBrokerAvisonYoungMatch)
+        		//.attr("pointer-events", sizeClassMatch)	
 	}
 
 
 
 	function agencyBrokerMatch(data, value) {
 
-
     	var agencyBroker = (data.properties.Agency_Bro);
     	console.log(agencyBroker)
-
-    	
-
-
 
     	if (agencyBroker == "JLL") {
     		//console.log('filtering working')
@@ -905,6 +1010,159 @@ function pulse() {
         	return "0";
     	};
 	}
+
+	function agencyBrokerAvisonYoungMatch(data, value) {
+
+    	var agencyBroker = (data.properties.Agency_Bro);
+    	console.log(agencyBroker)
+
+    	if (agencyBroker == "Avison Young") {
+    		//console.log('filtering working')
+        	
+       	 return ".7";
+    	} else {
+        	return "0";
+    	};
+	}
+
+	function agencyBrokerCBREMatch(data, value) {
+
+    	var agencyBroker = (data.properties.Agency_Bro);
+    	console.log(agencyBroker)
+
+    	if (agencyBroker == "CBRE") {
+    		//console.log('filtering working')
+        	
+       	 return ".7";
+    	} else {
+        	return "0";
+    	};
+	}
+
+	function agencyBrokerColliersMatch(data, value) {
+
+    	var agencyBroker = (data.properties.Agency_Bro);
+    	console.log(agencyBroker)
+
+    	if (agencyBroker == "Colliers International") {
+    		//console.log('filtering working')
+        	
+       	 return ".7";
+    	} else {
+        	return "0";
+    	};
+	}
+
+	function agencyBrokerCushmanMatch(data, value) {
+
+    	var agencyBroker = (data.properties.Agency_Bro);
+    	console.log(agencyBroker)
+
+    	if (agencyBroker == "Cushman & Wakefield") {
+    		//console.log('filtering working')
+        	
+       	 return ".7";
+    	} else {
+        	return "0";
+    	};
+	}
+
+	function agencyBrokerNewmarkMatch(data, value) {
+
+    	var agencyBroker = (data.properties.Agency_Bro);
+    	console.log(agencyBroker)
+
+    	if (agencyBroker == "Newmark Knight Frank") {
+    		//console.log('filtering working')
+        	
+       	 return ".7";
+    	} else {
+        	return "0";
+    	};
+	}
+
+	function agencyBrokerLincolnMatch(data, value) {
+
+    	var agencyBroker = (data.properties.Agency_Bro);
+    	console.log(agencyBroker)
+
+    	if (agencyBroker == "Lincoln Property Company") {
+    		//console.log('filtering working')
+        	
+       	 return ".7";
+    	} else {
+        	return "0";
+    	};
+	}
+
+	function agencyBrokerTishmanMatch(data, value) {
+
+    	var agencyBroker = (data.properties.Agency_Bro);
+    	console.log(agencyBroker)
+
+    	if (agencyBroker == "Tishman Speyer") {
+    		//console.log('filtering working')
+        	
+       	 return ".7";
+    	} else {
+        	return "0";
+    	};
+	}
+
+	function agencyBrokerTranswesternMatch(data, value) {
+
+    	var agencyBroker = (data.properties.Agency_Bro);
+    	console.log(agencyBroker)
+
+    	if (agencyBroker == "Transwestern") {
+    		//console.log('filtering working')
+        	
+       	 return ".7";
+    	} else {
+        	return "0";
+    	};
+	}
+
+	function agencyBrokerOtherMatch(data, value) {
+
+    	var agencyBroker = (data.properties.Agency_Bro);
+    	console.log(agencyBroker)
+
+    	if (agencyBroker != "Transwestern" &&
+    		agencyBroker != "Tishman Speyer" &&
+    		agencyBroker != "Lincoln Property Company" &&
+    		agencyBroker != "JLL" &&
+    		agencyBroker != "Cushman & Wakefield" &&
+    		agencyBroker != "Colliers International" &&
+    		agencyBroker != "CBRE" &&
+    		agencyBroker != "Avison Young") {
+    		//console.log('filtering working')
+        	
+       	 return ".7";
+    	} else {
+        	return "0";
+    	};
+	}
+
+
+//Build 'Select All' Checkbox
+	
+	// Listen for click on toggle checkbox
+$('#select-all').click(function(event) {   
+    if(this.checked) {
+        // Iterate each checkbox
+        $(':checkbox').each(function() {
+            this.checked = true;                        
+        });
+    } else {
+        $(':checkbox').each(function() {
+            this.checked = false;                       
+        });
+    }
+});	
+	
+
+	
 
 
 }
