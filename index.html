@@ -28,7 +28,7 @@
     <script src="//d3projection.js"></script>
     <script src="//d3js.org/topojson.v1.min.js"></script>
     <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
-    <script src="data/CaliforniaCountiesOverdoses.json"></script>z
+    <script src="data/CaliforniaCountiesOverdoses.json"></script>
     <script src="data/Chitown.json"></script>
     <script src="data/statesProj.json"></script>
     <script src="data/Counties_proj.json"></script>
@@ -53,16 +53,16 @@
 
     		
         <!-- Title -->
-        <h1 class="title has-text-centered"  style="color:#e30613; ">Coworking Nation?</h1>
+        <h1 class="title has-text-centered"  style="color:#e30613;font-size:40px; ">Coworking Nation?</h1>
         <h2 class="subtitle has-text-centered"></h2>
 
         <div class="container">
 			<div class="row">
 				<div class="col-md-2">
 				</div>
-				<div class="col-md-8 indexText" style="font:JLL;padding-top:100px; text-align:left"  >
+				<div class="col-md-8 indexText" style="font:JLL;padding-top:40px; text-align:left"  >
 
-					<p>While coworking is now a ubiquitous presence in the urban landscape, the coworking trend has been years in the making.  In the mid-nineties, only a few coworking concepts existed nationally.  That number has steadily grown as the concept of coworking has evolved and proliferated across the US - especially in metros like New York, San Francisco, Silicon Valley, Los Angeles, Denver, and New York. Not only have the number of coworking spaces increased dramatically, but they are occupying larger blocks of space.  In 2018 alone, 8,559,229 square feet were leased for coworking/flexible space - with most of these leases signed in New York, San Francisco, Washington DC, Chicago, and Seattle.</p>
+					<p>Flexible space/coworking has seen growth like no other sector.  In the mid-nineties, only a handful of coworking spaces existed nationally.  That number has steadily grown as the concept of coworking has evolved and proliferated across the US - especially in metros like New York, San Francisco, Silicon Valley, Los Angeles, Denver, and New York. Not only have the number of coworking spaces increased dramatically, but they are occupying larger blocks of space.  In 2018 alone, 8,559,229 square feet were leased for coworking/flexible space - with most of these leases signed in New York, San Francisco, Washington DC, Chicago, and Seattle.  JLL estimates that flexible space is growing at an average annual rate of 23% since 2010.</p>
 
 				</div>
 
@@ -110,7 +110,7 @@
 				</div>
 				<div class="col-md-8 indexText" style="font:JLL;padding-top:50px; padding-bottom:50px; text-align:left"  >
 
-					<p>While coworking is now a ubiquitous presence in the urban landscape, the coworking trend has been years in the making.  In the mid-nineties, only a few coworking concepts existed nationally.  That number has steadily grown as the concept of coworking has evolved and proliferated across the US - especially in metros like New York, San Francisco, Silicon Valley, Los Angeles, Denver, and New York. Not only have the number of coworking spaces increased dramatically, but they are occupying larger blocks of space.  In 2018 alone, 8,559,229 square feet were leased for coworking/flexible space - with most of these leases signed in New York, San Francisco, Washington DC, Chicago, and Seattle.</p>
+					<p>WeWork, Regus, Knotel, and Spaces have the largest market share in the flexible space sector.  Use the map below to filter flexible space tenants by lease-sign year, lease size, and agency brokerage firm. </p>
 
 				</div>
 
@@ -142,11 +142,21 @@
 				<div class="col-md-8 indexText" style=" width:80%;  height:100%; float: left; margin-top:20px">
 
 					<div  id="sliderContainer" style=" width:50%;  height:75%; float: left; margin-top:20px"> 
-						<div id="range-leaflet-title" style ="vertical-align:top; padding-bottom:3%" >Lease Sign Year</div>
+						<div id="range-leaflet-title" style ="vertical-align:top; padding-bottom:3%" ><b>Lease Sign Year</b></div>
          				<input id="timeslide-leaflet" style ="position:relative; width:70%;float:bottom" type="range" min="0" max="25" value="0" step="1" /><br>
          				<span id="range-leaflet" style="display:block; margin-top:3%" >All Current Leases</span>
 
-    					<div id="vis" style=" padding-top: 10px"  >
+
+         				<div id="range-sizeSlide-leaflet-title" style ="vertical-align:top; padding-top:10%" ><b>Lease Size</b></div>
+         			<input id="sizeSlide-leaflet" style="position:relative; width:70%"type="range" min="0" max="31" value="0" step="1" /><br>
+         			<span id="sizeRange-leaflet" style="display:block; margin-top:3%" >All Lease Sizes</span>	
+
+    					
+				     	
+        			</div>
+
+        		<div  id="sliderContainer" style=" width:50%;  height:75%; float: left; margin-top:20px"> 
+        			<div id="vis" style=" padding-top: 10px;width:140%"  >
   							<label  ><b>Agency Broker</b>
   							</label>
   					<label class="container" >Select All
@@ -193,16 +203,11 @@
   							<input type="checkbox" id="OtherCheckbox" checked >
   							<span class="checkmark"></span>
 					</label>
-						</div>
-				     	
-        			</div>
-
-        		<div  id="sliderContainer" style=" width:50%;  height:75%; float: right; margin-top:20px"> 
-        			<div id="range-sizeSlide-leaflet-title" style ="vertical-align:top; padding-bottom:3%" >Lease Size</div>
-         			<input id="sizeSlide-leaflet" style="position:relative; width:70%"type="range" min="0" max="31" value="0" step="1" /><br>
-         			<span id="sizeRange-leaflet" style="display:block; margin-top:3%" >All Lease Sizes</span>		
+					</div>	
 
         		</div>
+
+
 
 
 
