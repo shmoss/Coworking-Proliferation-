@@ -6,10 +6,514 @@ svg {
   margin-left: auto; 
   margin-right: auto;
 }
+
+.round {
+  position: relative;
+  padding-left:35px;
+
+
 }
 
 
+.round label {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  cursor: pointer;
+  height: 28px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 28px;
+}
 
+.round label:after {
+  border: 2px solid #fff;
+  border-top: none;
+  border-right: none;
+  content: "     ";
+  height: 6px;
+  left: 7px;
+  opacity: 0;
+  position: absolute;
+  top: 8px;
+  transform: rotate(-45deg);
+  width: 12px;
+
+}
+
+.round label:before {
+  border: 2px solid #fff;
+  border-top: none;
+  border-right: none;
+  content: "     ";
+  height: 6px;
+  left: 7px;
+  opacity: 0;
+  position: absolute;
+  top: 8px;
+  transform: rotate(-45deg);
+  width: 12px;
+}
+.round input[type="checkbox"] {
+  visibility: hidden;
+}
+
+.round input[type="checkbox"]:checked + label {
+  background-color: #e30613;
+  border-color: black;
+  opacity:.7;
+}
+
+.round input[type="checkbox"]:checked + label:after {
+  opacity: 1;
+
+}
+
+.Regus {
+  position: relative;
+  padding-left:35px;
+  
+
+}
+
+
+.Regus label {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  cursor: pointer;
+  height: 28px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 28px;
+}
+
+.Regus label:after {
+  border: 2px solid #fff;
+  border-top: none;
+  border-right: none;
+  content: "     ";
+  height: 6px;
+  left: 7px;
+  opacity: 0;
+  position: absolute;
+  top: 8px;
+  transform: rotate(-45deg);
+  width: 12px;
+
+}
+
+.Regus label:before {
+  border: 2px solid #fff;
+  border-top: none;
+  border-right: none;
+  content: "     ";
+  height: 6px;
+  left: 7px;
+  opacity: 0;
+  position: absolute;
+  top: 8px;
+  transform: rotate(-45deg);
+  width: 12px;
+}
+.Regus input[type="checkbox"] {
+  visibility: hidden;
+}
+
+.Regus input[type="checkbox"]:checked + label {
+  background-color: #17a2b8;
+  border-color: black;
+  opacity:.7;
+}
+
+.Regus input[type="checkbox"]:checked + label:after {
+  opacity: 1;
+
+}
+
+
+.Spaces {
+  position: relative;
+  padding-left:35px;
+  
+
+}
+
+
+.Spaces label {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  cursor: pointer;
+  height: 28px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 28px;
+}
+
+.Spaces label:after {
+  border: 2px solid #fff;
+  border-top: none;
+  border-right: none;
+  content: "     ";
+  height: 6px;
+  left: 7px;
+  opacity: 0;
+  position: absolute;
+  top: 8px;
+  transform: rotate(-45deg);
+  width: 12px;
+
+}
+
+.Spaces label:before {
+  border: 2px solid #fff;
+  border-top: none;
+  border-right: none;
+  content: "     ";
+  height: 6px;
+  left: 7px;
+  opacity: 0;
+  position: absolute;
+  top: 8px;
+  transform: rotate(-45deg);
+  width: 12px;
+}
+.Spaces input[type="checkbox"] {
+  visibility: hidden;
+}
+
+.Spaces input[type="checkbox"]:checked + label {
+  background-color: #28a745;
+  border-color: black;
+  opacity:.7;
+}
+
+.Spaces input[type="checkbox"]:checked + label:after {
+  opacity: 1;
+
+}
+
+.Knotel {
+  position: relative;
+  padding-left:35px;
+  
+
+}
+
+
+.Knotel label {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  cursor: pointer;
+  height: 28px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 28px;
+}
+
+.Knotel label:after {
+  border: 2px solid #fff;
+  border-top: none;
+  border-right: none;
+  content: "     ";
+  height: 6px;
+  left: 7px;
+  opacity: 0;
+  position: absolute;
+  top: 8px;
+  transform: rotate(-45deg);
+  width: 12px;
+
+}
+
+.Knotel label:before {
+  border: 2px solid #fff;
+  border-top: none;
+  border-right: none;
+  content: "     ";
+  height: 6px;
+  left: 7px;
+  opacity: 0;
+  position: absolute;
+  top: 8px;
+  transform: rotate(-45deg);
+  width: 12px;
+}
+.Knotel input[type="checkbox"] {
+  visibility: hidden;
+}
+
+.Knotel input[type="checkbox"]:checked + label {
+  background-color: #6610f2;
+  border-color: black;
+  opacity:.7;
+}
+
+.Knotel input[type="checkbox"]:checked + label:after {
+  opacity: 1;
+
+}
+
+
+.RocketSpace {
+  position: relative;
+  padding-left:35px;
+  
+
+}
+
+
+.RocketSpace label {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  cursor: pointer;
+  height: 28px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 28px;
+}
+
+.RocketSpace label:after {
+  border: 2px solid #fff;
+  border-top: none;
+  border-right: none;
+  content: "     ";
+  height: 6px;
+  left: 7px;
+  opacity: 0;
+  position: absolute;
+  top: 8px;
+  transform: rotate(-45deg);
+  width: 12px;
+
+}
+
+.RocketSpace label:before {
+  border: 2px solid #fff;
+  border-top: none;
+  border-right: none;
+  content: "     ";
+  height: 6px;
+  left: 7px;
+  opacity: 0;
+  position: absolute;
+  top: 8px;
+  transform: rotate(-45deg);
+  width: 12px;
+}
+.RocketSpace input[type="checkbox"] {
+  visibility: hidden;
+}
+
+.RocketSpace input[type="checkbox"]:checked + label {
+  background-color: #ffc107;
+  border-color: black;
+  opacity:.7;
+}
+
+.RocketSpace input[type="checkbox"]:checked + label:after {
+  opacity: 1;
+
+}
+
+
+.HQWorkspaces {
+  position: relative;
+  padding-left:35px;
+  
+
+}
+
+
+.HQWorkspaces label {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  cursor: pointer;
+  height: 28px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 28px;
+}
+
+.HQWorkspaces label:after {
+  border: 2px solid #fff;
+  border-top: none;
+  border-right: none;
+  content: "     ";
+  height: 6px;
+  left: 7px;
+  opacity: 0;
+  position: absolute;
+  top: 8px;
+  transform: rotate(-45deg);
+  width: 12px;
+
+}
+
+.HQWorkspaces label:before {
+  border: 2px solid #fff;
+  border-top: none;
+  border-right: none;
+  content: "     ";
+  height: 6px;
+  left: 7px;
+  opacity: 0;
+  position: absolute;
+  top: 8px;
+  transform: rotate(-45deg);
+  width: 12px;
+}
+.HQWorkspaces input[type="checkbox"] {
+  visibility: hidden;
+}
+
+.HQWorkspaces input[type="checkbox"]:checked + label {
+  background-color: #ed700a;
+  border-color: black;
+  opacity:.7;
+}
+
+.HQWorkspaces input[type="checkbox"]:checked + label:after {
+  opacity: 1;
+
+}
+
+
+.OtherTenant {
+  position: relative;
+  padding-left:35px;
+  
+
+}
+
+
+.OtherTenant label {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  cursor: pointer;
+  height: 28px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 28px;
+}
+
+.OtherTenant label:after {
+  border: 2px solid #fff;
+  border-top: none;
+  border-right: none;
+  content: "     ";
+  height: 6px;
+  left: 7px;
+  opacity: 0;
+  position: absolute;
+  top: 8px;
+  transform: rotate(-45deg);
+  width: 12px;
+
+}
+
+.OtherTenant label:before {
+  border: 2px solid #fff;
+  border-top: none;
+  border-right: none;
+  content: "     ";
+  height: 6px;
+  left: 7px;
+  opacity: 0;
+  position: absolute;
+  top: 8px;
+  transform: rotate(-45deg);
+  width: 12px;
+}
+.OtherTenant input[type="checkbox"] {
+  visibility: hidden;
+}
+
+.OtherTenant input[type="checkbox"]:checked + label {
+  background-color: #ed700a;
+  border-color: black;
+  opacity:.7;
+}
+
+.OtherTenant input[type="checkbox"]:checked + label:after {
+  opacity: 1;
+
+}
+
+.tenantSelectAll {
+  position: relative;
+  padding-left:35px;
+  
+
+}
+
+
+.tenantSelectAll label {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  cursor: pointer;
+  height: 28px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 28px;
+}
+
+.tenantSelectAll label:after {
+  border: 2px solid #fff;
+  border-top: none;
+  border-right: none;
+  content: "     ";
+  height: 6px;
+  left: 7px;
+  opacity: 0;
+  position: absolute;
+  top: 8px;
+  transform: rotate(-45deg);
+  width: 12px;
+
+}
+
+.tenantSelectAll label:before {
+  border: 2px solid #fff;
+  border-top: none;
+  border-right: none;
+  content: "     ";
+  height: 6px;
+  left: 7px;
+  opacity: 0;
+  position: absolute;
+  top: 8px;
+  transform: rotate(-45deg);
+  width: 12px;
+}
+.tenantSelectAll input[type="checkbox"] {
+  visibility: hidden;
+}
+
+.tenantSelectAll input[type="checkbox"]:checked + label {
+  background-color: #ed700a;
+  border-color: black;
+  opacity:.7;
+}
+
+.tenantSelectAll input[type="checkbox"]:checked + label:after {
+  opacity: 1;
+
+}
 .container{
 
 }

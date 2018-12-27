@@ -141,80 +141,135 @@
 				</div>
 				<div class="col-md-8 indexText" style=" width:80%;  height:100%; float: left; margin-top:20px">
 
-					<div  id="sliderContainer" style=" width:50%;  height:75%; float: left; margin-top:20px"> 
+					<div  id="sliderContainer" style=" width:40%;  height:75%; float: left; margin-top:20px"> 
 						<div id="range-leaflet-title" style ="vertical-align:top; padding-bottom:3%" ><b>Lease Sign Year</b></div>
          				<input id="timeslide-leaflet" style ="position:relative; width:70%;float:bottom" type="range" min="0" max="25" value="0" step="1" /><br>
          				<span id="range-leaflet" style="display:block; margin-top:3%" >All Current Leases</span>
 
 
-         				<div id="range-sizeSlide-leaflet-title" style ="vertical-align:top; padding-top:10%" ><b>Lease Size</b></div>
+         				<div id="range-sizeSlide-leaflet-title" style ="vertical-align:top; padding-top:7%; padding-bottom:3%" ><b>Lease Size</b></div>
          			<input id="sizeSlide-leaflet" style="position:relative; width:70%"type="range" min="0" max="31" value="0" step="1" /><br>
          			<span id="sizeRange-leaflet" style="display:block; margin-top:3%" >All Lease Sizes</span>	
 
-    					
+
+         			<div id="vis" style=" padding-top: 20px;margin-right:30px;width:40%;display:inline-block"  >
+  							<label  ><b>Tenant</b>
+  							</label>
+
+  					<div class="tenantSelectAll" style="margin-right:30px; margin-top:13px">Select All
+    					<input type="checkbox" id="tenantSelect-all"  checked/>
+    					<label  for="tenantSelect-all"></label>
+  					</div>
+  							
+  					<div class="round" style="margin-right:30px">WeWork
+    					<input class ='tenantcheck' type="checkbox" id="WeWorkCheckbox"  checked/>
+    					<label  for="WeWorkCheckbox"></label>
+  					</div>
+					
+					<div class="Regus" style="margin-right:30px; margin-top:13px">Regus
+    					<input class ='tenantcheck' type="checkbox" id="RegusCheckbox"  checked/>
+    					<label  for="RegusCheckbox"></label>
+  					</div>
+
+  					<div class="Spaces" style="margin-right:30px; margin-top:13px">Spaces
+    					<input class ='tenantcheck' type="checkbox" id="SpacesCheckbox"  checked/>
+    					<label  for="SpacesCheckbox"></label>
+  					</div>
+
+  					<div class="Knotel" style="margin-right:30px; margin-top:13px">Knotel
+    					<input class ='tenantcheck' type="checkbox" id="KnotelCheckbox"  checked/>
+    					<label  for="KnotelCheckbox"></label>
+  					</div>
+
+  					<div class="RocketSpace" style="margin-right:30px; margin-top:13px">RocketSpace
+    					<input class ='tenantcheck' type="checkbox" id="RocketSpaceCheckbox"  checked/>
+    					<label  for="RocketSpaceCheckbox"></label>
+  					</div>
+
+  					<div class="HQWorkspaces" style="margin-right:30px; margin-top:13px">HQ Global Workspaces
+    					<input class ='tenantcheck' type="checkbox" id="HQCheckbox"  checked/>
+    					<label  for="HQCheckbox"></label>
+  					</div>
+
+  					<div class="OtherTenant" style="margin-right:30px; margin-top:13px">Other
+    					<input class ='tenantcheck' type="checkbox" id="OtherTenantCheckbox"  checked/>
+    					<label  for="OtherTenantCheckbox"></label>
+  					</div>
+					
+					</div>		
 				     	
         			</div>
 
+
         		<div  id="sliderContainer" style=" width:50%;  height:75%; float: left; margin-top:20px"> 
-        			<div id="vis" style=" padding-top: 10px;width:140%"  >
+        			<div id="vis" style=" padding-top: 10px;margin-right:300px;width:140%;display:inline-block"  >
   							<label  ><b>Agency Broker</b>
   							</label>
   					<label class="container" >Select All
-  							<input type="checkbox" id="select-all" checked >
+  							<input type="checkbox" id="agencyBrokerSelect-all" checked >
   							<span class="checkmark"></span>
 					</label>
 					<label class="container" >Avisons
-  							<input type="checkbox" id="AvisonCheckbox" checked >
+  							<input class ='agencyBrokerCheck' type="checkbox" id="AvisonCheckbox" value='Avison Young' checked >
   							<span class="checkmark"></span>
 					</label>
 					<label class="container" >CBRE
-  							<input type="checkbox" id="CBRECheckbox" checked >
+  							<input class ='agencyBrokerCheck' type="checkbox" id="CBRECheckbox" checked >
   							<span class="checkmark"></span>
 					</label>
 					<label class="container" >Colliers
-  							<input type="checkbox" id="ColliersCheckbox" checked >
+  							<input class ='agencyBrokerCheck' type="checkbox" id="ColliersCheckbox" checked >
   							<span class="checkmark"></span>
 					</label>
 					<label class="container" >Cushman & Wakefield
-  							<input type="checkbox" id="CushmanCheckbox" checked >
+  							<input class ='agencyBrokerCheck' type="checkbox" id="CushmanCheckbox" checked >
   							<span class="checkmark"></span>
 					</label>
 					<label class="container" >JLL
-  							<input type="checkbox" id="JLLCheckbox" checked >
+  							<input class ='agencyBrokerCheck' type="checkbox" id="JLLCheckbox" value='JLL' checked >
   							<span class="checkmark"></span>
 					</label>
 					<label class="container" >Newmark
-  							<input type="checkbox" id="NewmarkCheckbox" checked >
+  							<input class ='agencyBrokerCheck' type="checkbox" id="NewmarkCheckbox" checked >
   							<span class="checkmark"></span>
 					</label>
 					<label class="container" >Lincoln Property Company
-  							<input type="checkbox" id="LincolnCheckbox" checked >
+  							<input class ='agencyBrokerCheck' type="checkbox" id="LincolnCheckbox" checked >
   							<span class="checkmark"></span>
 					</label>
 					<label class="container" >Tishman Speyer
-  							<input type="checkbox" id="TishmanCheckbox" checked >
+  							<input class ='agencyBrokerCheck' type="checkbox" id="TishmanCheckbox" checked >
   							<span class="checkmark"></span>
 					</label>
 					<label class="container" >Transwestern
-  							<input type="checkbox" id="TranswesternCheckbox" checked >
+  							<input class ='agencyBrokerCheck' type="checkbox" id="TranswesternCheckbox" checked >
   							<span class="checkmark"></span>
 					</label>
 					<label class="container" >Other
-  							<input type="checkbox" id="OtherCheckbox" checked >
+  							<input class ='agencyBrokerCheck' type="checkbox" id="OtherCheckbox" checked >
   							<span class="checkmark"></span>
 					</label>
 					</div>	
 
-        		</div>
+				</div>
 
-
-
-
+				<div  id="sliderContainer" style=" width:30%;  height:75%; float: left; margin-top:-10%"> 
+        			
 
 				</div>
+
+			
+  				
+			
+
+
 
 				<div class="col-md-2">
 				</div>
+
+
+
+
 			</div>
 		</div>
 
@@ -228,12 +283,21 @@
 		
 
 
-<div class="container" style=" position:center; transition:height .5s ease-in-out" >
-
 	
 
 </div>
+
+
+			
+
 <script>
+
+
+
+	//.domain(['WeWork', 'Regus', 'Spaces', 'Knotel', 'RocketSpace', 'HQ Global Workplaces'])
+     //		.range(['#e30613', '#17a2b8', '#28a745', '#6610f2', '#ffc107', '#ed700a'])
+     	
+
 
  	var value 
 
@@ -605,6 +669,95 @@ function pulse() {
 
     	});
 
+    	//Tenant Checkboxes
+    	d3.selectAll("#WeWorkCheckbox").on("change", function() {
+  				var type = "WeWork"
+  				// I *think* "inline" is the default.
+  				display = this.checked ? "inline" : "none";
+
+ 				d3.selectAll(".features")
+    			.filter(function(d) { return d.properties.Tenant === type; })
+    			.attr("display", display);
+				});
+
+    	d3.selectAll("#RegusCheckbox").on("change", function() {
+  				var type = "Regus"
+  				// I *think* "inline" is the default.
+  				display = this.checked ? "inline" : "none";
+
+ 				d3.selectAll(".features")
+    			.filter(function(d) { return d.properties.Tenant === type; })
+    			.attr("display", display);
+				});
+
+    	d3.selectAll("#SpacesCheckbox").on("change", function() {
+  				var type = "Spaces"
+  				// I *think* "inline" is the default.
+  				display = this.checked ? "inline" : "none";
+
+ 				d3.selectAll(".features")
+    			.filter(function(d) { return d.properties.Tenant === type; })
+    			.attr("display", display);
+				});
+
+
+    	d3.selectAll("#KnotelCheckbox").on("change", function() {
+  				var type = "Knotel"
+  				// I *think* "inline" is the default.
+  				display = this.checked ? "inline" : "none";
+
+ 				d3.selectAll(".features")
+    			.filter(function(d) { return d.properties.Tenant === type; })
+    			.attr("display", display);
+				});
+
+    	d3.selectAll("#RocketSpaceCheckbox").on("change", function() {
+  				var type = "RocketSpace"
+  				// I *think* "inline" is the default.
+  				display = this.checked ? "inline" : "none";
+
+ 				d3.selectAll(".features")
+    			.filter(function(d) { return d.properties.Tenant === type; })
+    			.attr("display", display);
+				});
+
+    	d3.selectAll("#HQCheckbox").on("change", function() {
+  				var type = "HQ Global Workplaces"
+  				// I *think* "inline" is the default.
+  				display = this.checked ? "inline" : "none";
+
+ 				d3.selectAll(".features")
+    			.filter(function(d) { return d.properties.Tenant === type; })
+    			.attr("display", display);
+				});
+
+
+    	d3.selectAll("#OtherTenantCheckbox").on("change", function() {
+  				var type = "Transwestern"
+  				// I *think* "inline" is the default.
+  				display = this.checked ? "inline" : "none";
+
+ 				d3.selectAll(".features")
+    			.filter(function(d) { return d.properties.Tenant != 'WeWork' &&
+    										 d.properties.Tenant != 'Regus' &&
+    										 d.properties.Tenant != 'Spaces' &&
+    										 d.properties.Tenant != 'Knotel' &&
+    										 d.properties.Tenant != 'RocketSpace' &&
+    										 d.properties.Tenant != 'HQ Global Workplaces'; })
+    			.attr("display", display);
+				})
+
+    	d3.selectAll("#tenantSelect-all").on("change", function() {
+  				var type = "Transwestern"
+  				// I *think* "inline" is the default.
+  				display = this.checked ? "inline" : "none";
+
+ 				d3.selectAll(".features")
+    			.filter(function(d) { return d.properties.Tenant != null
+    										 })
+    			.attr("display", display);
+				})
+
     	//Agency Checkboxes
 
 		d3.selectAll("#JLLCheckbox").on("change", function() {
@@ -718,7 +871,7 @@ function pulse() {
 				})
 
 
-		d3.selectAll("#select-all").on("change", function() {
+		d3.selectAll("#agencyBrokerSelect-all").on("change", function() {
   				var type = "Transwestern"
   				// I *think* "inline" is the default.
   				display = this.checked ? "inline" : "none";
@@ -1153,20 +1306,19 @@ function pulse() {
 //Build 'Select All' Checkbox
 	
 	// Listen for click on toggle checkbox
-$('#select-all').click(function(event) {   
-    if(this.checked) {
-        // Iterate each checkbox
-        $(':checkbox').each(function() {
-            this.checked = true;                        
-        });
-    } else {
-        $(':checkbox').each(function() {
-            this.checked = false;                       
-        });
-    }
-});	
-	
+d3.select("#agencyBrokerSelect-all")
+  .on('click', function () {
+    let that = this;
+    d3.selectAll(".agencyBrokerCheck")
+      .each(function () { this.checked = that.checked });
+  });
 
+d3.select("#tenantSelect-all")
+  .on('click', function () {
+    let that = this;
+    d3.selectAll(".tenantcheck")
+      .each(function () { this.checked = that.checked });
+  });
 	
 
 
