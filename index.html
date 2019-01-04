@@ -62,7 +62,7 @@
 				</div>
 				<div class="col-md-8 indexText" style="font:JLL;padding-top:40px; text-align:left"  >
 
-					<p>Flexible space/coworking has seen growth like no other sector.  In the mid-nineties, only a handful of coworking spaces existed nationally.  That number has steadily grown as the concept of coworking has evolved and proliferated across the US - especially in metros like New York, San Francisco, Silicon Valley, Los Angeles, Denver, and New York. Not only have the number of coworking spaces increased dramatically, but they are occupying larger blocks of space.  In 2018 alone, 8,559,229 square feet were leased for coworking/flexible space - with most of these leases signed in New York, San Francisco, Washington DC, Chicago, and Seattle.  JLL estimates that flexible space is growing at an average annual rate of 23% since 2010.</p>
+					<p>Flexible space/coworking has seen growth like no other sector!sdf.  In the mid-nineties, only a handful of coworking spaces existed nationally.  That number has steadily grown as the concept of coworking has evolved and proliferated across the US - especially in metros like New York, San Francisco, Silicon Valley, Los Angeles, Denver, and New York. Not only have the number of coworking spaces increased dramatically, but they are occupying larger blocks of space.  In 2018 alone, 8,559,229 square feet were leased for coworking/flexible space - with most of these leases signed in New York, San Francisco, Washington DC, Chicago, and Seattle.  JLL estimates that flexible space is growing at an average annual rate of 23% since 2010.</p>
 
 				</div>
 
@@ -669,6 +669,90 @@ function pulse() {
 
     	});
 
+tenantArray2 = ['WeWork', 'Regus']
+
+var tenantObject2 = {}
+
+function tenantStatus2(statement, position){
+
+tenantObject2 = {
+  "Tenants": [{
+   "Name": "WeWork",
+   "Status": statement
+  }, {
+   "Name": "Regus",
+   "Status": statement
+   }
+]
+ }
+
+    tenantArray = [];
+    for(let item in tenantObject2) {
+        tenantObject2[item].forEach(function(each){
+            each.Status === statement
+        });
+    }
+    console.log(tenantObject2)
+    return tenantObject2
+
+}
+
+tenantStatus2(false)
+console.log(tenantObject2)
+
+
+    	//Build tenant array
+var tenantObject = {
+  "Tenants": [{
+   "Name": "WeWork",
+   "Status": true
+  }, {
+   "Name": "Regus",
+   "Status": true
+   }, {
+   "Name": "Spaces",
+   "Status": true
+   }, {
+   "Name": "Knotel",
+   "Status": true
+   }, {
+   "Name": "RocketSpace",
+   "Status": true
+   }, {
+   "Name": "HQ Global Workspaces",
+   "Status": true
+   }, {
+   "Name": "Other",
+   "Status": true
+   }, {
+   "Name": "Select All",
+   "Status": true
+   }
+]
+ }
+
+ console.log(tenantObject)
+
+function tenantStatus(status){
+    tenantArray = [];
+    for(let item in tenantObject) {
+        tenantObject[item].forEach(function(each){
+            if(each.Status == status) { // you cmpare to the wrong target
+                // do something
+                console.log(tenantObject[item])
+                 tenantArray.push(tenantObject[item]);
+            }
+        });
+    }
+}
+
+tenantStatus(true)
+
+//console.log(tenantArray)
+//console.log(tenantObject.Tenants[0])
+
+    	tenantArray = [];
+
     	//Tenant Checkboxes
     	d3.selectAll("#WeWorkCheckbox").on("change", function() {
   				var type = "WeWork"
@@ -678,12 +762,38 @@ function pulse() {
  				d3.selectAll(".features")
     			.filter(function(d) { return d.properties.Tenant === type; })
     			.attr("display", display);
+
+    				statusCheck = this.checked ? true : false
+  				console.log(statusCheck)
+  				if (statusCheck == false) {
+  					tenantObject.Tenants[0].Status = false
+  					
+  					console.log("We Work is false")
+  					console.log(tenantObject.Tenants)
+  					return tenantObject.Tenants
+  					
+  				} else {
+  					tenantObject.Tenants[0].Status = true
+  					console.log("We Work is true")
+  					console.log(tenantObject.Tenants)
+  				}
 				});
 
+    			var showOff = function () {
+ 					 console.log(tenantObject.Tenants[0].Status);
+				}
+
+				setTimeout(showOff, 115000);
+				console.log(tenantObject.Tenants)
+
+console.log(tenantObject.Tenants)
     	d3.selectAll("#RegusCheckbox").on("change", function() {
   				var type = "Regus"
   				// I *think* "inline" is the default.
   				display = this.checked ? "inline" : "none";
+
+  			
+  				
 
  				d3.selectAll(".features")
     			.filter(function(d) { return d.properties.Tenant === type; })
@@ -707,8 +817,10 @@ function pulse() {
   				display = this.checked ? "inline" : "none";
 
  				d3.selectAll(".features")
-    			.filter(function(d) { return d.properties.Tenant === type; })
+    			.filter(function(d) {return d.properties.Tenant === type; })
     			.attr("display", display);
+    			
+    			console.log(d)
 				});
 
     	d3.selectAll("#RocketSpaceCheckbox").on("change", function() {
@@ -761,6 +873,7 @@ function pulse() {
     	//Agency Checkboxes
 
 		d3.selectAll("#JLLCheckbox").on("change", function() {
+				(console.log(tenantObject.Tenants))
   				var type = "JLL"
   				// I *think* "inline" is the default.
   				display = this.checked ? "inline" : "none";
@@ -770,7 +883,7 @@ function pulse() {
     			.attr("display", display);
 				});
 			//checkBox();
-
+				
 		d3.selectAll("#AvisonCheckbox").on("change", function() {
   				var type = "Avison Young"
   				// I *think* "inline" is the default.
