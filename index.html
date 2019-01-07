@@ -874,12 +874,37 @@ console.log(tenantObject.Tenants)
 
 		d3.selectAll("#JLLCheckbox").on("change", function() {
 				(console.log(tenantObject.Tenants))
+				
+				for(let item in tenantObject) {
+					tenantArray = []
+        			tenantObject[item].forEach(function(each){
+            		if(each.Status == true) { // you cmpare to the wrong target
+                		var name = each.Name
+              			tenantArray.push(name);
+            		} 
+            		return name
+        			});
+   				 }
+    			
+
+
+    		
+
+    			//console.log(each.Name)
   				var type = "JLL"
   				// I *think* "inline" is the default.
   				display = this.checked ? "inline" : "none";
 
  				d3.selectAll(".features")
-    			.filter(function(d) { return d.properties.Agency_Bro === type; })
+    			.filter(function(d) { 
+    				return d.properties.Agency_Bro === type &&
+
+    						tenantArray.some(function(entry) {
+          					return d.properties.Tenant === entry;
+        					});
+
+    			
+    			})
     			.attr("display", display);
 				});
 			//checkBox();
