@@ -600,13 +600,68 @@ function pulse() {
 		//var coords = SFData.geometry.coordinates;
 		//console.log(coords)
 
+		var tenantNamesArray = []
 		SFData.forEach(function(d) {
 			var coords = d.geometry.coordinates
 			//console.log(coords)
 			d.latLong = new L.LatLng(coords[1],
 									coords[0]);
+			var tenantNames = d.properties.Tenant
+			
+			tenantNamesArray.push(tenantNames)
+			
+			
+			//console.log(tenantNames)
+			return tenantNames
 		
 		})
+//console.log(tenantNamesArray)
+		
+		/*
+		function tenantNamesArrayRemove(array){
+
+			return array.filter(function(ele){
+				console.log(ele)
+				return ele !== 'WeWork' || ele !== "Regus"
+			})
+
+		}
+*/
+		//tenantNamesArrayRemove(tenantNamesArray)
+
+		function removeItem(array){
+    for(var i = array.length; i--;){
+	if (array[i] === "WeWork" || 
+		array[i] === 'Regus'|| 
+		array[i] === 'weWork'|| 
+		array[i] === 'Spaces'|| 
+		array[i] === 'RocketSpace'|| 
+		array[i] === 'HQ Global Workplaces'|| 
+		array[i] === 'Knotel') array.splice(i, 1);
+}
+return array
+}
+
+
+removeItem(tenantNamesArray);
+console.log(tenantNamesArray)
+
+// Test Check for false WeWork
+function weWorkCheck(arr){
+   
+    for(let item in tenantObject) {
+        tenantObject[item].forEach(function(each){
+            if(each.Status == status) { // you cmpare to the wrong target
+                // do something
+               // console.log(tenantObject[item])
+                 tenantArray.push(tenantObject[item]);
+            }
+        });
+    }
+
+}
+
+		//console.log(tenantNamesArray)
 
 		var feature = mapG.selectAll("circle")
     		.data(SFData)
@@ -692,13 +747,13 @@ tenantObject2 = {
             each.Status === statement
         });
     }
-    console.log(tenantObject2)
+  //  console.log(tenantObject2)
     return tenantObject2
 
 }
 
 tenantStatus2(false)
-console.log(tenantObject2)
+//console.log(tenantObject2)
 
 
     	//Build tenant array
@@ -719,7 +774,7 @@ var tenantObject = {
    "Name": "RocketSpace",
    "Status": true
    }, {
-   "Name": "HQ Global Workspaces",
+   "Name": "HQ Global Workplaces",
    "Status": true
    }, {
    "Name": "Other",
@@ -728,10 +783,11 @@ var tenantObject = {
    "Name": "Select All",
    "Status": true
    }
+
 ]
  }
 
- console.log(tenantObject)
+ //console.log(tenantObject)
 
 function tenantStatus(status){
     tenantArray = [];
@@ -739,12 +795,15 @@ function tenantStatus(status){
         tenantObject[item].forEach(function(each){
             if(each.Status == status) { // you cmpare to the wrong target
                 // do something
-                console.log(tenantObject[item])
+               // console.log(tenantObject[item])
                  tenantArray.push(tenantObject[item]);
             }
         });
     }
+
 }
+
+
 
 tenantStatus(true)
 
@@ -759,46 +818,53 @@ tenantStatus(true)
   				// I *think* "inline" is the default.
   				display = this.checked ? "inline" : "none";
 
- 				d3.selectAll(".features")
-    			.filter(function(d) { return d.properties.Tenant === type; })
-    			.attr("display", display);
-
-    				statusCheck = this.checked ? true : false
-  				console.log(statusCheck)
-  				if (statusCheck == false) {
-  					tenantObject.Tenants[0].Status = false
-  					
-  					console.log("We Work is false")
-  					console.log(tenantObject.Tenants)
-  					return tenantObject.Tenants
-  					
-  				} else {
-  					tenantObject.Tenants[0].Status = true
-  					console.log("We Work is true")
-  					console.log(tenantObject.Tenants)
-  				}
-				});
-
-    			var showOff = function () {
- 					 console.log(tenantObject.Tenants[0].Status);
-				}
-
-				setTimeout(showOff, 115000);
-				console.log(tenantObject.Tenants)
-
-console.log(tenantObject.Tenants)
-    	d3.selectAll("#RegusCheckbox").on("change", function() {
-  				var type = "Regus"
-  				// I *think* "inline" is the default.
-  				display = this.checked ? "inline" : "none";
-
-  			
   				
 
  				d3.selectAll(".features")
     			.filter(function(d) { return d.properties.Tenant === type; })
     			.attr("display", display);
-				});
+
+
+    			statusCheck = this.checked ? true : false
+
+  				if (statusCheck == false) {
+  					tenantObject.Tenants[0].Status = false
+
+  					return tenantObject.Tenants
+  					
+  				} else {
+  					tenantObject.Tenants[0].Status = true
+  				}
+
+			});
+
+    			var showOff = function () {
+ 					 //console.log(tenantObject.Tenants[0].Status);
+				}
+
+				setTimeout(showOff, 115000);
+			
+
+    	d3.selectAll("#RegusCheckbox").on("change", function() {
+  				var type = "Regus"
+  				// I *think* "inline" is the default.
+  				display = this.checked ? "inline" : "none";
+
+ 				d3.selectAll(".features")
+    			.filter(function(d) { return d.properties.Tenant === type; })
+    			.attr("display", display);
+
+    			statusCheck = this.checked ? true : false
+
+  				if (statusCheck == false) {
+  					tenantObject.Tenants[1].Status = false
+
+  					return tenantObject.Tenants
+  					
+  				} else {
+  					tenantObject.Tenants[1].Status = true
+  				}
+			});
 
     	d3.selectAll("#SpacesCheckbox").on("change", function() {
   				var type = "Spaces"
@@ -808,7 +874,18 @@ console.log(tenantObject.Tenants)
  				d3.selectAll(".features")
     			.filter(function(d) { return d.properties.Tenant === type; })
     			.attr("display", display);
-				});
+
+    			statusCheck = this.checked ? true : false
+
+  				if (statusCheck == false) {
+  					tenantObject.Tenants[2].Status = false
+
+  					return tenantObject.Tenants
+  					
+  				} else {
+  					tenantObject.Tenants[2].Status = true
+  				}
+			});
 
 
     	d3.selectAll("#KnotelCheckbox").on("change", function() {
@@ -820,8 +897,18 @@ console.log(tenantObject.Tenants)
     			.filter(function(d) {return d.properties.Tenant === type; })
     			.attr("display", display);
     			
-    			console.log(d)
-				});
+    			statusCheck = this.checked ? true : false
+
+  				if (statusCheck == false) {
+  					tenantObject.Tenants[3].Status = false
+
+  					return tenantObject.Tenants
+  					
+  				} else {
+  					tenantObject.Tenants[3].Status = true
+  				}
+    	
+			});
 
     	d3.selectAll("#RocketSpaceCheckbox").on("change", function() {
   				var type = "RocketSpace"
@@ -831,7 +918,18 @@ console.log(tenantObject.Tenants)
  				d3.selectAll(".features")
     			.filter(function(d) { return d.properties.Tenant === type; })
     			.attr("display", display);
-				});
+
+    			statusCheck = this.checked ? true : false
+
+  				if (statusCheck == false) {
+  					tenantObject.Tenants[4].Status = false
+
+  					return tenantObject.Tenants
+  					
+  				} else {
+  					tenantObject.Tenants[4].Status = true
+  				}
+			});
 
     	d3.selectAll("#HQCheckbox").on("change", function() {
   				var type = "HQ Global Workplaces"
@@ -841,7 +939,18 @@ console.log(tenantObject.Tenants)
  				d3.selectAll(".features")
     			.filter(function(d) { return d.properties.Tenant === type; })
     			.attr("display", display);
-				});
+
+    			statusCheck = this.checked ? true : false
+
+  				if (statusCheck == false) {
+  					tenantObject.Tenants[5].Status = false
+
+  					return tenantObject.Tenants
+  					
+  				} else {
+  					tenantObject.Tenants[5].Status = true
+  				}
+			});
 
 
     	d3.selectAll("#OtherTenantCheckbox").on("change", function() {
@@ -857,7 +966,19 @@ console.log(tenantObject.Tenants)
     										 d.properties.Tenant != 'RocketSpace' &&
     										 d.properties.Tenant != 'HQ Global Workplaces'; })
     			.attr("display", display);
-				})
+
+    			statusCheck = this.checked ? true : false
+
+  				if (statusCheck == false) {
+  					console.log('other unchecked')
+  					tenantObject.Tenants[6].Status = false
+  					return tenantObject.Tenants
+  					
+  				} else {
+  					tenantObject.Tenants[6].Status = true
+  					
+  				}
+			})
 
     	d3.selectAll("#tenantSelect-all").on("change", function() {
   				var type = "Transwestern"
@@ -868,14 +989,24 @@ console.log(tenantObject.Tenants)
     			.filter(function(d) { return d.properties.Tenant != null
     										 })
     			.attr("display", display);
+
+    			statusCheck = this.checked ? true : false
+
+  				if (statusCheck == false) {
+  					tenantObject.Tenants[7].Status = false
+
+  					return tenantObject.Tenants
+  					
+  				} else {
+  					tenantObject.Tenants[7].Status = true
+  				}
+
 				})
 
-    	//Agency Checkboxes
+    	//Build tenantObject iterator function
 
-		d3.selectAll("#JLLCheckbox").on("change", function() {
-				(console.log(tenantObject.Tenants))
-				
-				for(let item in tenantObject) {
+    	function tenantStatusIterator () {
+    	for(let item in tenantObject) {
 					tenantArray = []
         			tenantObject[item].forEach(function(each){
             		if(each.Status == true) { // you cmpare to the wrong target
@@ -885,12 +1016,53 @@ console.log(tenantObject.Tenants)
             		return name
         			});
    				 }
-    			
+   				 //console.log(tenantArray)
+   				 console.log(tenantNamesArray[83])
+   				 
+  				if (tenantObject.Tenants[6].Status == false) {
+  					
+  					console.log("other is unchecked")
+
+  					return tenantObject.Tenants
+  					
+  				} else {
+  					for (let otherName in tenantNamesArray) {
+
+  						//console.log(otherName)
+  						tenantArray.push(tenantNamesArray[otherName])
+
+  					}
+  					console.log("other is checked")
+  					return tenantArray
+  				}
+
+    
+   		}
+
+   		console.log(tenantArray)
+
+   		function otherStatusIterator () {
+    	for(let item in tenantObject) {
+					tenantArray = []
+        			tenantObject[item].forEach(function(each){
+            		if(each.Status == true) { // you cmpare to the wrong target
+                		var name = each.Name
+              			tenantArray.push(name);
+            		} 
+            		return name
+        			});
+   				 }
+   				 //console.log(tenantArray)
+   		}
+
+    	//Agency Checkboxes
 
 
-    		
-
-    			//console.log(each.Name)
+		d3.selectAll("#JLLCheckbox").on("change", function() {
+				//(console.log(tenantObject.Tenants))
+				
+				tenantStatusIterator()
+    			console.log(tenantArray)
   				var type = "JLL"
   				// I *think* "inline" is the default.
   				display = this.checked ? "inline" : "none";
@@ -898,104 +1070,171 @@ console.log(tenantObject.Tenants)
  				d3.selectAll(".features")
     			.filter(function(d) { 
     				return d.properties.Agency_Bro === type &&
-
     						tenantArray.some(function(entry) {
           					return d.properties.Tenant === entry;
-        					});
-
-    			
+        					});			
     			})
     			.attr("display", display);
 				});
 			//checkBox();
 				
 		d3.selectAll("#AvisonCheckbox").on("change", function() {
+
+				tenantStatusIterator()
+
+				if (tenantObject.Tenants[0].Status == true) {
+					console.log('weWork checked')
+				} else {
+					console.log("weWork unchecked")
+				}
+				console.log(tenantArray)
   				var type = "Avison Young"
   				// I *think* "inline" is the default.
   				display = this.checked ? "inline" : "none";
 
  				d3.selectAll(".features")
-    			.filter(function(d) { return d.properties.Agency_Bro === type; })
+    			.filter(function(d) { 
+    				return d.properties.Agency_Bro === type &&
+    						tenantArray.some(function(entry) {
+          					return d.properties.Tenant === entry;
+        					});
+    			})
     			.attr("display", display);
 				});	
 
 		d3.selectAll("#CBRECheckbox").on("change", function() {
+
+				tenantStatusIterator()
+
   				var type = "CBRE"
   				// I *think* "inline" is the default.
   				display = this.checked ? "inline" : "none";
 
  				d3.selectAll(".features")
-    			.filter(function(d) { return d.properties.Agency_Bro === type; })
+    			.filter(function(d) { 
+    				return d.properties.Agency_Bro === type &&
+    						tenantArray.some(function(entry) {
+          					return d.properties.Tenant === entry;
+        					});
+    			})
     			.attr("display", display);
 				});
 
 		d3.selectAll("#ColliersCheckbox").on("change", function() {
+
+				tenantStatusIterator()
+
   				var type = "Colliers International"
   				// I *think* "inline" is the default.
   				display = this.checked ? "inline" : "none";
 
  				d3.selectAll(".features")
-    			.filter(function(d) { return d.properties.Agency_Bro === type; })
+    			.filter(function(d) {
+    			 return d.properties.Agency_Bro === type &&
+    						tenantArray.some(function(entry) {
+          					return d.properties.Tenant === entry;
+        					});
+    			})
     			.attr("display", display);
 				});
 
 		d3.selectAll("#CushmanCheckbox").on("change", function() {
+
+				tenantStatusIterator()
+
   				var type = "Cushman & Wakefield"
   				// I *think* "inline" is the default.
   				display = this.checked ? "inline" : "none";
 
  				d3.selectAll(".features")
-    			.filter(function(d) { return d.properties.Agency_Bro === type; })
+    			.filter(function(d) { 
+    				return d.properties.Agency_Bro === type &&
+    						tenantArray.some(function(entry) {
+          					return d.properties.Tenant === entry;
+        					});
+    			})
     			.attr("display", display);
 				})
 
 		d3.selectAll("#NewmarkCheckbox").on("change", function() {
+
+				tenantStatusIterator()
+
   				var type = "Newmark Knight Frank"
   				// I *think* "inline" is the default.
   				display = this.checked ? "inline" : "none";
 
  				d3.selectAll(".features")
-    			.filter(function(d) { return d.properties.Agency_Bro === type; })
+    			.filter(function(d) { 
+    				return d.properties.Agency_Bro === type &&
+    						tenantArray.some(function(entry) {
+          					return d.properties.Tenant === entry;
+        					});
+    			})
     			.attr("display", display);
 				})
 
 		d3.selectAll("#LincolnCheckbox").on("change", function() {
+
+				tenantStatusIterator()
+
   				var type = "Lincoln Property Company"
   				// I *think* "inline" is the default.
   				display = this.checked ? "inline" : "none";
 
  				d3.selectAll(".features")
-    			.filter(function(d) { return d.properties.Agency_Bro === type; })
+    			.filter(function(d) { 
+    				return d.properties.Agency_Bro === type &&
+    						tenantArray.some(function(entry) {
+          					return d.properties.Tenant === entry;
+        					});
+    			})
     			.attr("display", display);
 				})
 
 		d3.selectAll("#TishmanCheckbox").on("change", function() {
+
+				tenantStatusIterator()
   				var type = "Tishman Speyer"
   				// I *think* "inline" is the default.
   				display = this.checked ? "inline" : "none";
 
  				d3.selectAll(".features")
-    			.filter(function(d) { return d.properties.Agency_Bro === type; })
+    			.filter(function(d) { 
+    				return d.properties.Agency_Bro === type && 
+    						tenantArray.some(function(entry) {
+          					return d.properties.Tenant === entry;
+        					});
+    			})
     			.attr("display", display);
 				})
 
 		d3.selectAll("#TranswesternCheckbox").on("change", function() {
+
+				tenantStatusIterator()
+
   				var type = "Transwestern"
   				// I *think* "inline" is the default.
   				display = this.checked ? "inline" : "none";
 
  				d3.selectAll(".features")
-    			.filter(function(d) { return d.properties.Agency_Bro === type; })
+    			.filter(function(d) { 
+    				return d.properties.Agency_Bro === type 
+    			})
     			.attr("display", display);
 				})
 
 		d3.selectAll("#OtherCheckbox").on("change", function() {
+
+			tenantStatusIterator()
+
   				var type = "Transwestern"
   				// I *think* "inline" is the default.
   				display = this.checked ? "inline" : "none";
 
  				d3.selectAll(".features")
-    			.filter(function(d) { return d.properties.Agency_Bro != 'JLL' &&
+    			.filter(function(d) { 
+    				return d.properties.Agency_Bro != 'JLL' &&
     										 d.properties.Agency_Bro != 'Avison Young' &&
     										 d.properties.Agency_Bro != 'CBRE' &&
     										 d.properties.Agency_Bro != 'Colliers International' &&
@@ -1004,18 +1243,57 @@ console.log(tenantObject.Tenants)
     										 d.properties.Agency_Bro != 'Lincoln Property Company' &&
     										 d.properties.Agency_Bro != 'Lincoln Property Company' &&
     										 d.properties.Agency_Bro != 'Tishman Speyer' &&
-    										 d.properties.Agency_Bro != 'Transwestern'; })
+    										 d.properties.Agency_Bro != 'Transwestern' &&
+
+    										 tenantArray.some(function(entry) {
+          									return d.properties.Tenant === entry;
+        									});
+
+    				})
     			.attr("display", display);
 				})
+/*
+function exefunction() {
+    $("#agencyBrokerSelect-all").click(function () {
+            var isChecked = $("#agencyBrokerSelect-all").is(":checked");
+            if (isChecked) {
+                console.log("CheckBox checked.");
+                d3.selectAll(".features")
+    			.filter(function(d) { 
+    				return d.properties.Tenant != null && 
+    						tenantArray.some(function(entry) {
+          					return d.properties.Tenant === entry 
+        					}) 
+    										 })
+    			.attr("display", display);
+            } else {
+                d3.selectAll(".features")
+    			
+    		
+    										
+    			.attr("display",'none');
+            }
+        });
+}
+exefunction()
 
-
+*/
 		d3.selectAll("#agencyBrokerSelect-all").on("change", function() {
+				console.log(tenantArray)
+				tenantStatusIterator()
+
   				var type = "Transwestern"
   				// I *think* "inline" is the default.
   				display = this.checked ? "inline" : "none";
 
+  				
+
  				d3.selectAll(".features")
-    			.filter(function(d) { return d.properties.Agency_Bro != null
+    			.filter(function(d) { 
+    				return d.properties.Tenant != null && 
+    						tenantArray.some(function(entry) {
+          					return d.properties.Tenant === entry
+        					}) 
     										 })
     			.attr("display", display);
 				})
