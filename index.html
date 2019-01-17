@@ -568,7 +568,7 @@ function pulse() {
         L.mapbox.accessToken = 'pk.eyJ1Ijoic3RhcnJtb3NzMSIsImEiOiJjaXFheXZ6ejkwMzdyZmxtNmUzcWFlbnNjIn0.IoKwNIJXoLuMHPuUXsXeug';
         var mapboxUrl = 'https://api.mapbox.com/styles/v1/mapbox/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}';
             //var accessToken = 'pk.eyJ1Ijoic3RhcnJtb3NzMSIsImEiOiJjam13ZHlxbXgwdncwM3FvMnJjeGVubjI5In0.-ridMV6bkkyNhbPfMJhVzw';
-        var map = L.map('map').setView([37.7801177, -122.40], 13);
+        var map = L.map('map').setView([41.8781, -87.6298], 13);
         		mapLink = 
             '<a href="http://openstreetmap.org">OpenStreetMap</a>';
         L.tileLayer(
@@ -1128,7 +1128,10 @@ console.log(tenantArray)
   				display = this.checked ? "inline" : "none";
 
  				d3.selectAll(".features")
-    			.filter(function(d) { return d.properties.Tenant != null
+    			.filter(function(d) { return d.properties.Tenant != null &&
+    										 	agencyBrokerArray.some(function(entry) {
+          										return d.properties.Agency_Bro === entry;
+        										});	
     										 })
     			.attr("display", display);
 
@@ -1136,11 +1139,26 @@ console.log(tenantArray)
 
   				if (statusCheck == false) {
   					tenantObject.Tenants[7].Status = false
+  					tenantObject.Tenants[0].Status = false
+  					tenantObject.Tenants[1].Status = false
+  					tenantObject.Tenants[2].Status = false
+  					tenantObject.Tenants[3].Status = false
+  					tenantObject.Tenants[4].Status = false
+  					tenantObject.Tenants[5].Status = false
+  					tenantObject.Tenants[6].Status = false
 
   					return tenantObject.Tenants
   					
   				} else {
   					tenantObject.Tenants[7].Status = true
+  					tenantObject.Tenants[0].Status = true
+  					tenantObject.Tenants[1].Status = true
+  					tenantObject.Tenants[2].Status = true
+  					tenantObject.Tenants[3].Status = true
+  					tenantObject.Tenants[4].Status = true
+  					tenantObject.Tenants[5].Status = true
+  					tenantObject.Tenants[6].Status = true
+
   				}
 
 				})
