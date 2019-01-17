@@ -401,7 +401,7 @@
 
    		var radiusNational = d3.scaleLinear()
       		.domain([20000, 40000, 60000, 80000, 100000]) 
-     		 .range([4, 6]);
+     		 .range([8, 12]);
 
     	var b = points.selectAll("path")
     		.data( coworkingTenantsNational.features )
@@ -601,6 +601,7 @@ function pulse() {
 		//console.log(coords)
 
 		var tenantNamesArray = []
+		var agencyBrokerNamesArray = []
 		SFData.forEach(function(d) {
 			var coords = d.geometry.coordinates
 			//console.log(coords)
@@ -609,14 +610,27 @@ function pulse() {
 			var tenantNames = d.properties.Tenant
 			
 			tenantNamesArray.push(tenantNames)
+
+			var agencyBrokerNames = d.properties.Agency_Bro
+			
+			agencyBrokerNamesArray.push(agencyBrokerNames)
 			
 			
 			//console.log(tenantNames)
-			return tenantNames
+			return tenantNames;
+
+			
+			
+			
+			//console.log(tenantNames)
+			//console.log(agencyBrokerNames)
+			return agencyBrokerNames
 		
 		})
+
+
 //console.log(tenantNamesArray)
-		
+	//console.log(agencyBrokerNamesArray)	
 		/*
 		function tenantNamesArrayRemove(array){
 
@@ -644,7 +658,27 @@ return array
 
 
 removeItem(tenantNamesArray);
-console.log(tenantNamesArray)
+//console.log(tenantNamesArray)
+
+		// Remove agency broker names already in the list for 'other' category
+
+		function removeAgencyBrokerItem(array){
+    for(var i = array.length; i--;){
+	if (array[i] === "Avison Young" || 
+		array[i] === 'CBRE'|| 
+		array[i] === 'Colliers International'|| 
+		array[i] === 'Cushman & Wakefield'|| 
+		array[i] === 'JLL'|| 
+		array[i] === 'Newmark Knight Frank'|| 
+		array[i] === 'Tishman Speyer'|| 
+		array[i] === 'Transwestern'|| 
+		array[i] === 'Lincoln Property Company') array.splice(i, 1);
+}
+return array
+}
+
+removeAgencyBrokerItem(agencyBrokerNamesArray)
+//console.log(agencyBrokerNamesArray)
 
 // Test Check for false WeWork
 function weWorkCheck(arr){
@@ -787,6 +821,46 @@ var tenantObject = {
 ]
  }
 
+ var agencyBrokerObject = {
+  "AgencyBrokers": [{
+   "Name": "Avison Young",
+   "Status": true
+  }, {
+   "Name": "CBRE",
+   "Status": true
+   }, {
+   "Name": "Colliers International",
+   "Status": true
+   }, {
+   "Name": "Cushman & Wakefield",
+   "Status": true
+   }, {
+   "Name": "JLL",
+   "Status": true
+   }, {
+   "Name": "Newmark Knight Frank",
+   "Status": true
+   }, {
+   "Name": "Lincoln Property Company",
+   "Status": true
+   }, {
+   "Name": "Tishman Speyer",
+   "Status": true
+   }, {
+   "Name": "Transwestern",
+   "Status": true
+   }, {
+   "Name": "Other",
+   "Status": true
+   }
+   , {
+   "Name": "Select All",
+   "Status": true
+   }
+
+]
+ }
+
  //console.log(tenantObject)
 
 function tenantStatus(status){
@@ -803,17 +877,37 @@ function tenantStatus(status){
 
 }
 
+function agencyBrokerStatus(status){
+    agencyBrokerArray = [];
+    for(let item in agencyBrokerObject) {
+       agencyBrokerObject[item].forEach(function(each){
+            if(each.Status == status) { // you cmpare to the wrong target
+                // do something
+               // console.log(tenantObject[item])
+                 agencyBrokerArray.push(agencyBrokerObject[item]);
+            }
+        });
+    }
 
+}
 
 tenantStatus(true)
+agencyBrokerStatus(true)
+console.log(agencyBrokerArray)
+console.log(tenantArray)
 
 //console.log(tenantArray)
 //console.log(tenantObject.Tenants[0])
 
     	tenantArray = [];
+    	agencyBrokerArray = []
 
     	//Tenant Checkboxes
     	d3.selectAll("#WeWorkCheckbox").on("change", function() {
+
+    			agencyBrokerStatusIterator ()
+    			console.log(agencyBrokerArray)
+    			console.log(agencyBrokerObject.AgencyBrokers)
   				var type = "WeWork"
   				// I *think* "inline" is the default.
   				display = this.checked ? "inline" : "none";
@@ -821,7 +915,12 @@ tenantStatus(true)
   				
 
  				d3.selectAll(".features")
-    			.filter(function(d) { return d.properties.Tenant === type; })
+    			.filter(function(d) { 
+    				return d.properties.Tenant === type &&
+    						agencyBrokerArray.some(function(entry) {
+          					return d.properties.Agency_Bro === entry;
+        					});			
+    			})
     			.attr("display", display);
 
 
@@ -846,12 +945,19 @@ tenantStatus(true)
 			
 
     	d3.selectAll("#RegusCheckbox").on("change", function() {
+
+    			agencyBrokerStatusIterator ()
   				var type = "Regus"
   				// I *think* "inline" is the default.
   				display = this.checked ? "inline" : "none";
 
  				d3.selectAll(".features")
-    			.filter(function(d) { return d.properties.Tenant === type; })
+    			.filter(function(d) { 
+    				return d.properties.Tenant === type &&
+    						agencyBrokerArray.some(function(entry) {
+          					return d.properties.Agency_Bro === entry;
+        					});			
+    			})
     			.attr("display", display);
 
     			statusCheck = this.checked ? true : false
@@ -867,12 +973,19 @@ tenantStatus(true)
 			});
 
     	d3.selectAll("#SpacesCheckbox").on("change", function() {
+
+    			agencyBrokerStatusIterator ()
   				var type = "Spaces"
   				// I *think* "inline" is the default.
   				display = this.checked ? "inline" : "none";
 
  				d3.selectAll(".features")
-    			.filter(function(d) { return d.properties.Tenant === type; })
+    			.filter(function(d) { 
+    				return d.properties.Tenant === type &&
+    						agencyBrokerArray.some(function(entry) {
+          					return d.properties.Agency_Bro === entry;
+        					});			
+    			})
     			.attr("display", display);
 
     			statusCheck = this.checked ? true : false
@@ -889,12 +1002,19 @@ tenantStatus(true)
 
 
     	d3.selectAll("#KnotelCheckbox").on("change", function() {
+
+    			agencyBrokerStatusIterator ()
   				var type = "Knotel"
   				// I *think* "inline" is the default.
   				display = this.checked ? "inline" : "none";
 
  				d3.selectAll(".features")
-    			.filter(function(d) {return d.properties.Tenant === type; })
+    			.filter(function(d) { 
+    				return d.properties.Tenant === type &&
+    						agencyBrokerArray.some(function(entry) {
+          					return d.properties.Agency_Bro === entry;
+        					});			
+    			})
     			.attr("display", display);
     			
     			statusCheck = this.checked ? true : false
@@ -911,12 +1031,19 @@ tenantStatus(true)
 			});
 
     	d3.selectAll("#RocketSpaceCheckbox").on("change", function() {
+
+    			agencyBrokerStatusIterator ()
   				var type = "RocketSpace"
   				// I *think* "inline" is the default.
   				display = this.checked ? "inline" : "none";
 
  				d3.selectAll(".features")
-    			.filter(function(d) { return d.properties.Tenant === type; })
+    			.filter(function(d) { 
+    				return d.properties.Tenant === type &&
+    						agencyBrokerArray.some(function(entry) {
+          					return d.properties.Agency_Bro === entry;
+        					});			
+    			})
     			.attr("display", display);
 
     			statusCheck = this.checked ? true : false
@@ -932,12 +1059,19 @@ tenantStatus(true)
 			});
 
     	d3.selectAll("#HQCheckbox").on("change", function() {
+
+    			agencyBrokerStatusIterator ()
   				var type = "HQ Global Workplaces"
   				// I *think* "inline" is the default.
   				display = this.checked ? "inline" : "none";
 
  				d3.selectAll(".features")
-    			.filter(function(d) { return d.properties.Tenant === type; })
+    			.filter(function(d) { 
+    				return d.properties.Tenant === type &&
+    						agencyBrokerArray.some(function(entry) {
+          					return d.properties.Agency_Bro === entry;
+        					});			
+    			})
     			.attr("display", display);
 
     			statusCheck = this.checked ? true : false
@@ -954,6 +1088,8 @@ tenantStatus(true)
 
 
     	d3.selectAll("#OtherTenantCheckbox").on("change", function() {
+
+    			agencyBrokerStatusIterator ()
   				var type = "Transwestern"
   				// I *think* "inline" is the default.
   				display = this.checked ? "inline" : "none";
@@ -964,7 +1100,11 @@ tenantStatus(true)
     										 d.properties.Tenant != 'Spaces' &&
     										 d.properties.Tenant != 'Knotel' &&
     										 d.properties.Tenant != 'RocketSpace' &&
-    										 d.properties.Tenant != 'HQ Global Workplaces'; })
+    										 d.properties.Tenant != 'HQ Global Workplaces' &&
+    										 	agencyBrokerArray.some(function(entry) {
+          										return d.properties.Agency_Bro === entry;
+        										});	
+    										  })
     			.attr("display", display);
 
     			statusCheck = this.checked ? true : false
@@ -981,6 +1121,8 @@ tenantStatus(true)
 			})
 
     	d3.selectAll("#tenantSelect-all").on("change", function() {
+
+    			agencyBrokerStatusIterator ()
   				var type = "Transwestern"
   				// I *think* "inline" is the default.
   				display = this.checked ? "inline" : "none";
@@ -1038,7 +1180,7 @@ tenantStatus(true)
 
     
    		}
-
+   		tenantStatusIterator ()
    		console.log(tenantArray)
 
    		function otherStatusIterator () {
@@ -1055,14 +1197,58 @@ tenantStatus(true)
    				 //console.log(tenantArray)
    		}
 
+
+   		//Build Agency Broker Iterator Function
+
+   		function agencyBrokerStatusIterator () {
+   			console.log(agencyBrokerNamesArray)
+   			console.log(agencyBrokerObject.AgencyBrokers[4].Status)
+    	for(let item in agencyBrokerObject) {
+					agencyBrokerArray = []
+        			agencyBrokerObject[item].forEach(function(each){
+            		if(each.Status == true) { // you cmpare to the wrong target
+                		var name = each.Name
+              			agencyBrokerArray.push(name);
+              			//console.log(name)
+            		} 
+            		return name
+        			});
+   				 }
+   				 console.log(agencyBrokerArray)
+   				 //console.log(tenantNamesArray[83])
+   				// console.log(agencyBrokerObject.AgencyBrokers[9])
+  				if (agencyBrokerObject.AgencyBrokers[9].Status == false) {
+  					
+  					//console.log("other agency broker is unchecked")
+
+  					return agencyBrokerObject.AgencyBrokers
+  					
+  				} else {
+  					for (let otherName in agencyBrokerNamesArray) {
+
+  						
+  						agencyBrokerArray.push(agencyBrokerNamesArray[otherName])
+
+  					}
+  					//console.log("other agency broker is checked")
+  					return agencyBrokerArray
+  				}
+
+    
+   		}
+
+   		agencyBrokerStatusIterator()
+   		console.log(tenantArray)
+
     	//Agency Checkboxes
 
 
 		d3.selectAll("#JLLCheckbox").on("change", function() {
 				//(console.log(tenantObject.Tenants))
-				
+				//console.log(agencyBrokerArray)
 				tenantStatusIterator()
-    			console.log(tenantArray)
+    			//console.log(tenantArray)
+
   				var type = "JLL"
   				// I *think* "inline" is the default.
   				display = this.checked ? "inline" : "none";
@@ -1075,6 +1261,21 @@ tenantStatus(true)
         					});			
     			})
     			.attr("display", display);
+
+    			statusCheck = this.checked ? true : false
+
+    			if (statusCheck == false) {
+  					agencyBrokerObject.AgencyBrokers[4].Status = false
+  					//console.log(agencyBrokerObject.AgencyBrokers)
+  						//console.log(agencyBrokerArray)
+  					return agencyBrokerObject.AgencyBrokers
+  					
+  				} else {
+  					//console.log(agencyBrokerObject.AgencyBrokers)
+  						//console.log(agencyBrokerArray)
+  					agencyBrokerObject.AgencyBrokers[4].Status = true
+  				}
+
 				});
 			//checkBox();
 				
@@ -1082,12 +1283,8 @@ tenantStatus(true)
 
 				tenantStatusIterator()
 
-				if (tenantObject.Tenants[0].Status == true) {
-					console.log('weWork checked')
-				} else {
-					console.log("weWork unchecked")
-				}
-				console.log(tenantArray)
+				
+				//console.log(tenantArray)
   				var type = "Avison Young"
   				// I *think* "inline" is the default.
   				display = this.checked ? "inline" : "none";
@@ -1100,6 +1297,18 @@ tenantStatus(true)
         					});
     			})
     			.attr("display", display);
+
+    			statusCheck = this.checked ? true : false
+
+    			if (statusCheck == false) {
+  					agencyBrokerObject.AgencyBrokers[0].Status = false
+  					
+  					return agencyBrokerObject.AgencyBrokers
+  					
+  				} else {
+  					agencyBrokerObject.AgencyBrokers[0].Status = true
+  				}
+
 				});	
 
 		d3.selectAll("#CBRECheckbox").on("change", function() {
@@ -1118,6 +1327,18 @@ tenantStatus(true)
         					});
     			})
     			.attr("display", display);
+
+    			statusCheck = this.checked ? true : false
+
+    			if (statusCheck == false) {
+  					agencyBrokerObject.AgencyBrokers[1].Status = false
+  					
+  					return agencyBrokerObject.AgencyBrokers
+  					
+  				} else {
+  					agencyBrokerObject.AgencyBrokers[1].Status = true
+  				}
+
 				});
 
 		d3.selectAll("#ColliersCheckbox").on("change", function() {
@@ -1136,6 +1357,18 @@ tenantStatus(true)
         					});
     			})
     			.attr("display", display);
+
+    			statusCheck = this.checked ? true : false
+
+    			if (statusCheck == false) {
+  					agencyBrokerObject.AgencyBrokers[2].Status = false
+  					
+  					return agencyBrokerObject.AgencyBrokers
+  					
+  				} else {
+  					agencyBrokerObject.AgencyBrokers[2].Status = true
+  				}
+
 				});
 
 		d3.selectAll("#CushmanCheckbox").on("change", function() {
@@ -1154,6 +1387,18 @@ tenantStatus(true)
         					});
     			})
     			.attr("display", display);
+
+    			statusCheck = this.checked ? true : false
+
+    			if (statusCheck == false) {
+  					agencyBrokerObject.AgencyBrokers[3].Status = false
+  					
+  					return agencyBrokerObject.AgencyBrokers
+  					
+  				} else {
+  					agencyBrokerObject.AgencyBrokers[3].Status = true
+  				}
+
 				})
 
 		d3.selectAll("#NewmarkCheckbox").on("change", function() {
@@ -1172,6 +1417,18 @@ tenantStatus(true)
         					});
     			})
     			.attr("display", display);
+
+    			statusCheck = this.checked ? true : false
+
+    			if (statusCheck == false) {
+  					agencyBrokerObject.AgencyBrokers[5].Status = false
+  					
+  					return agencyBrokerObject.AgencyBrokers
+  					
+  				} else {
+  					agencyBrokerObject.AgencyBrokers[5].Status = true
+  				}
+
 				})
 
 		d3.selectAll("#LincolnCheckbox").on("change", function() {
@@ -1190,6 +1447,18 @@ tenantStatus(true)
         					});
     			})
     			.attr("display", display);
+
+    			statusCheck = this.checked ? true : false
+
+    			if (statusCheck == false) {
+  					agencyBrokerObject.AgencyBrokers[6].Status = false
+  					
+  					return agencyBrokerObject.AgencyBrokers
+  					
+  				} else {
+  					agencyBrokerObject.AgencyBrokers[6].Status = true
+  				}
+
 				})
 
 		d3.selectAll("#TishmanCheckbox").on("change", function() {
@@ -1207,6 +1476,18 @@ tenantStatus(true)
         					});
     			})
     			.attr("display", display);
+
+    			statusCheck = this.checked ? true : false
+
+    			if (statusCheck == false) {
+  					agencyBrokerObject.AgencyBrokers[7].Status = false
+  					
+  					return agencyBrokerObject.AgencyBrokers
+  					
+  				} else {
+  					agencyBrokerObject.AgencyBrokers[7].Status = true
+  				}
+
 				})
 
 		d3.selectAll("#TranswesternCheckbox").on("change", function() {
@@ -1222,6 +1503,18 @@ tenantStatus(true)
     				return d.properties.Agency_Bro === type 
     			})
     			.attr("display", display);
+
+    			statusCheck = this.checked ? true : false
+
+    			if (statusCheck == false) {
+  					agencyBrokerObject.AgencyBrokers[8].Status = false
+  					
+  					return agencyBrokerObject.AgencyBrokers
+  					
+  				} else {
+  					agencyBrokerObject.AgencyBrokers[8].Status = true
+  				}
+
 				})
 
 		d3.selectAll("#OtherCheckbox").on("change", function() {
@@ -1251,6 +1544,18 @@ tenantStatus(true)
 
     				})
     			.attr("display", display);
+
+    			statusCheck = this.checked ? true : false
+
+    			if (statusCheck == false) {
+  					agencyBrokerObject.AgencyBrokers[9].Status = false
+  					
+  					return agencyBrokerObject.AgencyBrokers
+  					
+  				} else {
+  					agencyBrokerObject.AgencyBrokers[9].Status = true
+  				}
+
 				})
 /*
 function exefunction() {
@@ -1296,6 +1601,38 @@ exefunction()
         					}) 
     										 })
     			.attr("display", display);
+
+    			statusCheck = this.checked ? true : false
+
+    			if (statusCheck == false) {
+  					agencyBrokerObject.AgencyBrokers[10].Status = false
+  					agencyBrokerObject.AgencyBrokers[0].Status = false
+  					agencyBrokerObject.AgencyBrokers[1].Status = false
+  					agencyBrokerObject.AgencyBrokers[2].Status = false
+  					agencyBrokerObject.AgencyBrokers[3].Status = false
+  					agencyBrokerObject.AgencyBrokers[4].Status = false
+  					agencyBrokerObject.AgencyBrokers[5].Status = false
+  					agencyBrokerObject.AgencyBrokers[6].Status = false
+  					agencyBrokerObject.AgencyBrokers[7].Status = false
+  					agencyBrokerObject.AgencyBrokers[8].Status = false
+  					agencyBrokerObject.AgencyBrokers[9].Status = false
+  					
+  					return agencyBrokerObject.AgencyBrokers
+  					
+  				} else {
+  					agencyBrokerObject.AgencyBrokers[10].Status = true
+  					agencyBrokerObject.AgencyBrokers[0].Status = true
+  					agencyBrokerObject.AgencyBrokers[1].Status = true
+  					agencyBrokerObject.AgencyBrokers[2].Status = true
+  					agencyBrokerObject.AgencyBrokers[3].Status = true
+  					agencyBrokerObject.AgencyBrokers[4].Status = true
+  					agencyBrokerObject.AgencyBrokers[5].Status = true
+  					agencyBrokerObject.AgencyBrokers[6].Status = true
+  					agencyBrokerObject.AgencyBrokers[7].Status = true
+  					agencyBrokerObject.AgencyBrokers[8].Status = true
+  					agencyBrokerObject.AgencyBrokers[9].Status = true
+  				}
+
 				})
 
 
